@@ -26,7 +26,7 @@ export const updatePostmutation = gql`
 `;
 
 export const deletePostmutation = gql`
-    mutation deletePost( $id: String! ){
+    mutation deletePost( $id: ID! ){
         deletePost (id: $id) {
             id
             title

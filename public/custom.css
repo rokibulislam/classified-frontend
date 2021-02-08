@@ -1,0 +1,16 @@
+/*-----------------------------------------------
+|   Flex
+-----------------------------------------------*/
+.flex-center {
+    align-items: center;
+    justify-content: center;
+  }
+  .flex-between-center {
+    align-items: center;
+    justify-content: space-between;
+  }
+  .flex-end-center {
+    justify-content: flex-end;
+    align-items: center;
+  }
+  

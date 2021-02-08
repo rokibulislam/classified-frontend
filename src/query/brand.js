@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
 export const QueryBrands = gql`
   query GetBrands {
@@ -8,3 +8,14 @@ export const QueryBrands = gql`
     }
   }
 `;
+
+export const QueryBrand = gql`
+  query getBrand( $id: ID!)  {
+    brand( id: $id ) {
+      id
+      name
+    }
+  }
+`;
+
+export const useBrandsQuery = () => useQuery(QueryBrands);

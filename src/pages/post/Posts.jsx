@@ -1,6 +1,6 @@
 import React from 'react'
-import AdminLayout from '../layout/AdminLayout'
-import Posts from '../components/posts'
+import AdminLayout from '../../layout/AdminLayout'
+import Posts from '../../components/posts'
 
 const AdminPosts = () => {
     

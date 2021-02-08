@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
 export const QueryComplains = gql`
     query GetComplains {
@@ -7,3 +7,14 @@ export const QueryComplains = gql`
         }
     }
 `;
+
+export const QueryComplain = gql`
+  query getComplain( $id: ID!)  {
+    complain( id: $id ) {
+      id
+      description
+    }
+  }
+`;
+
+export const useComplainsQuery = () => useQuery(QueryComplains);

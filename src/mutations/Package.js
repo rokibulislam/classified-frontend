@@ -23,7 +23,7 @@ export const updatePackagemutation = gql`
 `;
 
 export const deletePackagemutation = gql`
-    mutation deleteComplain( $id: String! ){
+    mutation deletePackage( $id: ID! ){
         deletePackage (id: $id) {
             id
             name

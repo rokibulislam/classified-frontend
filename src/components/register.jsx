@@ -91,6 +91,9 @@ const Register = ( props ) => {
                     <button type="submit" className="btn btn-primary"  onClick={handleSubmit}> Register  </button>  
                 </div>
             </form>
+
+            <Link to="/login"> Login </Link>
+
         </div>
     </div>
         </>

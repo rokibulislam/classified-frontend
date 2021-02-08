@@ -1,8 +1,8 @@
 import React from 'react'
-import AdminLayout from '../layout/AdminLayout'
-import Brands from '../components/brands'
+import AdminLayout from '../../layout/AdminLayout'
+import Brands from '../../components/brands'
 
-const AdminTags = () => {
+const AdminBrands = () => {
     
     return (
         <>
@@ -14,4 +14,4 @@ const AdminTags = () => {
 }
 
 
-export default AdminTags;
+export default AdminBrands;

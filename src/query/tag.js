@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
 export const QueryTags = gql`
     query GetTags {
@@ -8,3 +8,14 @@ export const QueryTags = gql`
         }
     }
 `;
+
+export const QueryTag = gql`
+  query getTag( $id: ID!)  {
+    tag( id: $id ) {
+      id
+      name
+    }
+  }
+`;
+
+export const useTagsQuery = () => useQuery(QueryTags);

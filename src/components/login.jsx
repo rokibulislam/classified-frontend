@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { gql, useMutation } from '@apollo/client';
-import { Link, withRouter } from 'react-router-dom'
-import { loginmutation } from '../mutations/Login' 
+import { Link, useHistory } from 'react-router-dom'
+import { loginmutation, useLoginMutation } from '../mutations/Login' 
 import http from '../services/httpService'
 
 const Login = ( props ) => {
-
+    let history = useHistory();
+    
     const [state , setState] = useState({
         email : "",
         password : "",
@@ -22,7 +23,7 @@ const Login = ( props ) => {
         }))
     }
 
-    const handleSubmit = ( e ) => {
+    const handleSubmit =  ( e ) => {
         e.preventDefault();
 
         try {
@@ -31,17 +32,20 @@ const Login = ( props ) => {
                 "password":state.password,
             }
 
+            // useLoginMutation( state.email, state.password )
+ 
+            
             login({
                 variables: {
                     email: payload.email, 
                     password: payload.password 
                 }
             }).then( (response) => {
-            let token = response.data.login.token 
-            localStorage.setItem('auth_token', token)
-            http.setAuthToken(token)
-              
-            props.history.push('/');
+                let token = response.data.login.token 
+                localStorage.setItem('auth_token', token)
+                http.setAuthToken(token)
+                
+                history.push('/');
 
             }).catch(function(error) {
                 setState(prevState => ({
@@ -49,9 +53,7 @@ const Login = ( props ) => {
                     error: error.message,
                 }))
             });
-
-            console.log( test );
-
+            
         } catch (ex) {
 
         }
@@ -93,4 +95,4 @@ const Login = ( props ) => {
     )
 }
 
-export default withRouter(Login);
+export default Login;

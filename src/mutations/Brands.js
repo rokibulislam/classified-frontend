@@ -23,7 +23,7 @@ export const updateBrandmutation = gql`
 `;
 
 export const deleteBrandmutation = gql`
-    mutation deleteBrand( $id: String! ){
+    mutation deleteBrand( $id: ID! ){
         deleteBrand (id: $id) {
             id
             name

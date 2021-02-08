@@ -1,15 +1,31 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { ApolloProvider } from '@apollo/client';
-import { ApolloClient, InMemoryCache, gql, useQuery, useMutation } from '@apollo/client';
-
+import { ApolloProvider,ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Routes from './routes'
+import { getJwt } from './services/authService'
+
+// const httpLink = new HttpLink({ uri: "http://localhost:3001/graphql" });
+
+const authLink = setContext((_, { headers }) => {
+  const token = getJwt();
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ''
+    }
+  };
+});
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql',
+});
 
 const client = new ApolloClient({
   uri: 'http://localhost:3001/graphql',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 })
 

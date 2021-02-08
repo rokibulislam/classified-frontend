@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
 export const QueryPosts = gql`
   query GetPosts {
@@ -9,3 +9,14 @@ export const QueryPosts = gql`
   }
 `;
 
+export const QueryPost = gql`
+  query getPost( $id: ID!)  {
+    post( id: $id ) {
+      id
+      title
+      body
+    }
+  }
+`;
+
+export const usePostsQuery = () => useQuery(QueryPosts);

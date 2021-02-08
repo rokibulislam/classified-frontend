@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
 export const QueryPackages = gql`
     query GetPackages {
@@ -8,3 +8,5 @@ export const QueryPackages = gql`
     }
     }
 `;
+
+export const usePackagesQuery = () => useQuery(QueryPackages);

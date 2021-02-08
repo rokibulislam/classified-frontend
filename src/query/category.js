@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
 export const QueryCategories = gql`
     query GetCategories {
@@ -8,3 +8,16 @@ export const QueryCategories = gql`
         }
     }
 `;
+
+
+export const QueryCategory = gql`
+  query getCategory( $id: ID!)  {
+    category( id: $id ) {
+      id
+      name
+    }
+  }
+`;
+
+
+export const useCategoriesQuery = () => useQuery(QueryCategories);

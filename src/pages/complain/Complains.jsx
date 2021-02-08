@@ -1,6 +1,6 @@
 import React from 'react'
-import AdminLayout from '../layout/AdminLayout'
-import Complains from '../components/complains'
+import AdminLayout from '../../layout/AdminLayout'
+import Complains from '../../components/complains'
 
 const AdminComplains = () => {
     

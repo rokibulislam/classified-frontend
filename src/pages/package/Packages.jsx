@@ -1,8 +1,8 @@
 import React from 'react'
-import AdminLayout from '../layout/AdminLayout'
-import Packages from '../components/packages'
+import AdminLayout from '../../layout/AdminLayout'
+import Packages from '../../components/packages'
 
-const AdminTags = () => {
+const AdminPackages = () => {
     
     return (
         <>
@@ -14,4 +14,4 @@ const AdminTags = () => {
 }
 
 
-export default AdminTags;
+export default AdminPackages;
