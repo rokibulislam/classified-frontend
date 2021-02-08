@@ -7,3 +7,5 @@ const authLayout = (props) => {
         </div>
     )
 }
+
+export default authLayout;

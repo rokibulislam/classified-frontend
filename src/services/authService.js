@@ -45,9 +45,6 @@ export function updateCurrentUser({
 }) {
   localStorage.setItem('name', name)
   localStorage.setItem('email', email)
-  localStorage.setItem('avatar', avatar || '')
-  localStorage.setItem('companyName', companyName || '')
-  localStorage.setItem('phoneNumber', phoneNumber || '')
 }
 
 export function getJwt() {
