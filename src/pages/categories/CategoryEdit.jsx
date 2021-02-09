@@ -22,20 +22,18 @@ const CategoryEdit = ( props  ) => {
     if (loading) return null;
     if (error) return `Error! ${error}`;
 
-    console.log( data );
-
     return (
         <>
             <AdminLayout>
                 <form className="loginform">     
-                    <div class="form-group">
+                    <div className="form-group">
                         <label> Name  </label>
                         <input type="text" className="form-control" name="name" placeholder="Enter Name" 
                             value={name} onChange={ (e) => setName( e.target.value ) } 
                         />
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                         <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> Update Category </button> 
                     </div> 
                 </form> 

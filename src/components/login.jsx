@@ -69,6 +69,19 @@ const Login = ( props ) => {
             }
         <div className="row justify-content-md-center mt-5">
             <div className="col-md-offset-4 col-md-4">
+
+                <div className="row">
+
+                    <div className="col-md-6">
+                        Login
+                    </div>
+
+                    <div className="col-md-6">
+                        <Link to="/register"> create an account </Link>
+                    </div>
+
+                </div>
+
                 <form className="loginform"> 
                     
                     <div class="form-group">
@@ -78,15 +91,21 @@ const Login = ( props ) => {
                         />
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                         <label> Password  </label>
                         <input type="password" className="form-control" name="password" placeholder="Enter Your Password"   
                             value={state.password} onChange={handleChange}
                         />
                     </div>
 
-                    <div class="form-group">
-                        <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> Login </button> 
+                    <div className="row">
+                        <div className="col-md-6">
+                            <Link > Forget Password? </Link>
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <button type="submit"  className="btn btn-primary mt-3 btn-block" onClick={handleSubmit}> Login </button> 
                     </div> 
                 </form>
             </div>
