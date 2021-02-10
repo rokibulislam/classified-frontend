@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import auth from '../../services/authService'
 // import '../../css/sidebar.css'
 
 
 const AdminSidebar = (props) => {
+    let history = useHistory();
 
     const logout = () => {
         auth.logout();
-        props.history.push('/')
+        history.push('/')
     }
 
     return (
@@ -55,6 +56,31 @@ const AdminSidebar = (props) => {
                         Complain
                     </Link>
                 </li> 
+
+                <li>
+                    <Link to="/admin/orders"> 
+                        Order
+                    </Link>
+                </li> 
+
+                <li>
+                    <Link to="/admin/reports"> 
+                        Reports
+                    </Link>
+                </li> 
+
+
+                <li>
+                    <Link to="/admin/reviews"> 
+                        Reviews
+                    </Link>
+                </li> 
+
+                <li>
+                    <Link to="/admin/profile"> 
+                        Profile
+                    </Link>
+                </li> 
             {
                 !auth.getCurrentUser() ? (
                     <>
@@ -73,7 +99,7 @@ const AdminSidebar = (props) => {
                 )
                 : <> 
                     <li>
-                        <Link onClick={logout}> 
+                        <Link to="/" onClick={logout}> 
                             Logout
                         </Link>
                     </li> 
@@ -84,4 +110,4 @@ const AdminSidebar = (props) => {
     )
 }
 
-export default withRouter(AdminSidebar);
+export default AdminSidebar;

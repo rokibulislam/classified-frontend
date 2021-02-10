@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { gql, useMutation } from '@apollo/client';
 import { Link, useHistory } from 'react-router-dom'
 import { loginmutation, useLoginMutation } from '../mutations/Login' 
-import http from '../services/httpService'
+import authService from '../services/authService'
 
-const Login = ( props ) => {
+const LoginForm = ( props ) => {
     let history = useHistory();
     
     const [state , setState] = useState({
@@ -13,7 +13,19 @@ const Login = ( props ) => {
         error: {}
     })
 
-    const [login, { data }] = useMutation(loginmutation);
+    const [login, { data }] = useMutation( loginmutation, {
+        onError: ( error ) => {
+            setState(prevState => ({
+                ...prevState,
+                error: error.message,
+            }))
+        },
+        update: ( store, response ) => {
+            let token = response.data.login.token 
+            authService.setJwt( token )
+            history.push('/');
+        }
+    });
 
     const handleChange = (e) => {
         const {name , value} = e.target   
@@ -25,39 +37,12 @@ const Login = ( props ) => {
 
     const handleSubmit =  ( e ) => {
         e.preventDefault();
-
-        try {
-            const payload = {
-                "email":  state.email,
-                "password":state.password,
+        login({
+            variables: {
+                email: state.email, 
+                password: state.password 
             }
-
-            // useLoginMutation( state.email, state.password )
- 
-            
-            login({
-                variables: {
-                    email: payload.email, 
-                    password: payload.password 
-                }
-            }).then( (response) => {
-                let token = response.data.login.token 
-                localStorage.setItem('auth_token', token)
-                http.setAuthToken(token)
-                
-                history.push('/');
-
-            }).catch(function(error) {
-                setState(prevState => ({
-                    ...prevState,
-                    error: error.message,
-                }))
-            });
-            
-        } catch (ex) {
-
-        }
-
+        })
     }
 
     const { email, password, error } = state;
@@ -100,7 +85,7 @@ const Login = ( props ) => {
 
                     <div className="row">
                         <div className="col-md-6">
-                            <Link > Forget Password? </Link>
+                            <Link to="/forget-password"> Forget Password? </Link>
                         </div>
                     </div>
 
@@ -114,4 +99,4 @@ const Login = ( props ) => {
     )
 }
 
-export default Login;
+export default LoginForm;

@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 export const createBrandmutation = gql`
     mutation createBrand ( $name: String! ){
@@ -12,7 +12,7 @@ export const createBrandmutation = gql`
 `;
 
 export const updateBrandmutation = gql`
-    mutation updateBrand( $name: String! ){
+    mutation updateBrand( $id: ID!, $name: String! ){
         updateBrand (id: $id, input: {
             name: $name
         } ) {
@@ -30,3 +30,17 @@ export const deleteBrandmutation = gql`
         }
     }
 `;
+
+
+export const useCreateBrand = () => useMutation( createBrandmutation, {
+
+})
+
+export const useUpdateBrand = () => useMutation( updateBrandmutation, {
+
+})
+
+
+export const useDeleteBrand = () => useMutation( deleteBrandmutation, {
+
+})

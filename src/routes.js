@@ -30,6 +30,13 @@ import ComplainEdit from './pages/complain/ComplainEdit'
 
 import LoginPage from './pages/auth/Login'
 import RegisterPage from './pages/auth/Register'
+import ForgetPasswordPage from './pages/auth/ForgetPassword'
+import ResetPasswordPage from './pages/auth/ResetPassword'
+
+import AdminOrders from './pages/order/orders'
+import Profile from './pages/user/profile'
+import ReviewPage from './pages/review/reviews'
+import ReportPage from './pages/report/reports'
 
 import ProtectedRoute from './components/common/protectedRoute'
 
@@ -40,8 +47,10 @@ const routes = () => {
         <Router>
             <Switch>
                 <ProtectedRoute path='/' exact component={Dashboard} />
-                <Route path='/login' exact component={LoginPage} />
-                <Route path='/register' exact component={RegisterPage} />
+                <Route path='/login'  component={LoginPage} />
+                <Route path='/register' component={RegisterPage} />
+                <Route path='/forget-password' component={ForgetPasswordPage}/>
+                <Route path='/reset-password' component={ResetPasswordPage}/>
                 <ProtectedRoute path='/admin/posts/create'  component={PostCreate} />
                 <ProtectedRoute path='/admin/posts/:id/edit'  component={PostEdit} />
                 <ProtectedRoute path='/admin/posts'  component={AdminPosts} />
@@ -60,6 +69,11 @@ const routes = () => {
                 <ProtectedRoute path='/admin/complains/create'  component={ComplainCreate} />
                 <ProtectedRoute path='/admin/complains/:id/edit'  component={ComplainEdit} />
                 <ProtectedRoute path='/admin/complains'  component={AdminComplains} />
+                <ProtectedRoute path='/admin/orders'  component={AdminOrders} />
+                <ProtectedRoute path='/admin/profile'  component={Profile} />
+                <ProtectedRoute path='/admin/reviews'  component={ReviewPage} />
+                <ProtectedRoute path='/admin/reports'  component={ReportPage} />
+                
             </Switch>
         </Router>
     )

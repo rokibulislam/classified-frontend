@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 export const createTagsmutation = gql`
     mutation createTags( $name: String! ){
@@ -12,8 +12,8 @@ export const createTagsmutation = gql`
 `;
 
 export const updateTagsmutation = gql`
-    mutation updateTags( $name: String! ){
-        updateTags (id: $id, input: {
+    mutation updateTag( $id: ID!, $name: String! ){
+        updateTag (id: $id, input: {
             name: $name
         } ) {
             id
@@ -30,3 +30,16 @@ export const deleteTagsmutation = gql`
         }
     }
 `;
+
+export const useCreateTags = () => useMutation( createTagsmutation, {
+
+})
+
+export const useUpdateTags = () => useMutation( updateTagsmutation, {
+
+})
+
+
+export const useDeleteTags = () => useMutation( deleteTagsmutation, {
+
+})

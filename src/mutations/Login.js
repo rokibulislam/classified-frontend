@@ -15,6 +15,7 @@ export const loginmutation = gql`
 export const useLoginMutation = ( email, password ) => {
     console.log( email );
     console.log('mutation');
+    
     const [mutation, mutationResults] = useMutation(loginmutation, {
       onCompleted: (data) => {
         console.log('on complete');
@@ -34,3 +35,7 @@ export const useLoginMutation = ( email, password ) => {
     
     return [login, mutationResults]
 }
+
+export const useLogin = () => useMutation( loginmutation, {
+
+})

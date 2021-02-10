@@ -1,18 +1,49 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import AdminLayout from '../../layout/AdminLayout'
 import { useMutation, useQuery } from '@apollo/client';
 import { createPostmutation } from '../../mutations/Post' 
+import { QueryPosts } from '../../query/post'
 import { QueryCategories } from '../../query/category'
 import { QueryTags } from '../../query/tag'
 import { QueryBrands } from '../../query/brand'
 
 const PostCreate = ( props  ) => {
-    
     const [state , setState] = useState({
         title : "",
         body : "",
+        categories: "",
+        tags: "",
+        brands: "",
         error: {}
     })
+
+    const { loading: loadingcategories, error: errorcategories, data: category } = useQuery( QueryCategories);
+    const { loading: loadingtags, error: errortags, data: tag } = useQuery( QueryTags );
+    const { loading: loadingbrands, error: errorbrands, data: brand } = useQuery( QueryBrands );
+
+    const [ createPost ] = useMutation( createPostmutation, {
+        refetchQueries: [ { query: QueryPosts } ],
+        onError: (error) => {
+            console.log('error');
+        },
+        update: (store, response) => {
+            props.history.push('/admin/posts');
+        }
+    } );
+
+    const handleSubmit = ( e ) => {
+        e.preventDefault();
+        createPost({
+            variables: {
+                title: state.title, 
+                body: state.body,
+                categories: state.categories,
+                tags: state.tags,
+                brands: state.brands,
+            }
+        })
+    }
 
     const handleChange = (e) => {
         const {name , value} = e.target   
@@ -22,53 +53,13 @@ const PostCreate = ( props  ) => {
         }))
     }
 
-    const { loading: loadingcategories, error: errorcategories, data: category } = useQuery( 
-        QueryCategories
-    );
-    const { loading: loadingtags, error: errortags, data: tag } = useQuery( QueryTags );
-    const { loading: loadingbrands, error: errorbrands, data: brand } = useQuery( QueryBrands );
-
-    const [ createPost ] = useMutation( createPostmutation );
-
-    const handleSubmit = ( e ) => {
-        e.preventDefault();
-        try {
-            const payload = {
-                "title":  state.title,
-                "body":state.body,
-            }
-
-            createPost({
-                variables: {
-                    title: payload.title, 
-                    body: payload.body 
-                }
-            }).then( (response) => {
-                console.log(response);
-            }).catch(function(error) {
-                console.log(error);
-            })
-
-        } catch(ex) {
-
-        }
-    }
-
     if ( loadingcategories || loadingtags ||  loadingbrands ) return 'Loading...';
     if ( errorcategories ) return `Error! ${errorcategories.message}`;
     if ( errortags ) return `Error! ${errortags.message}`;
     if ( errorbrands ) return `Error! ${errorbrands.message}`;
 
-    const renderCategories = () => {
-        return category.categories.map( ( { id, name }) => <option key={id} value={name}> {name} </option>)
-    }
-
-    const rendertags = () => {
-        return tag.tags.map( ( { id, name }) => <option key={id} value={name}> {name} </option>)
-    }
-
-    const renderbrands = () => {
-        return brand.brands.map( ( { id, name }) => <option key={id} value={name}> {name} </option>)
+    const renderSelect = ( options ) => {
+        return options.map( ( { id, name }) => <option key={id} value={id}> {name} </option>)
     }
 
     return (
@@ -96,29 +87,29 @@ const PostCreate = ( props  ) => {
 
                         <div className="form-group">
                             <label htmlFor=""> Categories </label>
-                            <select className="form-control">
+                            <select name="categories" className="form-control" onChange={handleChange}>
                                 <option value=""> </option>
-                                { renderCategories() }
+                                { renderSelect( category.categories ) }
                             </select>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor=""> Tags </label>
-                            <select className="form-control">
+                            <select name="tags" className="form-control" onChange={handleChange}>
                                 <option value=""> </option>
-                                { rendertags() }
+                                { renderSelect( tag.tags ) }
                             </select>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor=""> Brands </label>
-                            <select className="form-control">
+                            <select name="brands" className="form-control"  onChange={handleChange}>
                                 <option value=""> </option>
-                                { renderbrands() }
+                                { renderSelect( brand.brands ) }
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> Create Post </button> 
                         </div> 
                     </form>

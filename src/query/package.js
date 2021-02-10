@@ -10,13 +10,13 @@ export const QueryPackages = gql`
 `;
 
 export const QueryPackage = gql`
-    query GetPackage {
-        package {
-            id
-            name
-        }
+  query getPackage( $id: ID!)  {
+    package( id: $id ) {
+      id
+      name
     }
+  }
 `;
 
-
-export const usePackagesQuery = () => useQuery(QueryPackages);
+export const usePackagesQuery = () => useQuery( QueryPackages );
+export const usePackageQuery  = ( options ) => useQuery( QueryPackage, options );

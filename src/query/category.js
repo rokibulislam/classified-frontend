@@ -5,6 +5,7 @@ export const QueryCategories = gql`
         categories {
             id
             name
+            description
         }
     }
 `;
@@ -15,9 +16,11 @@ export const QueryCategory = gql`
     category( id: $id ) {
       id
       name
+      description
     }
   }
 `;
 
 
-export const useCategoriesQuery = () => useQuery(QueryCategories);
+export const useCategoriesQuery = () => useQuery( QueryCategories );
+export const useBrandQuery  = ( options ) => useQuery( QueryCategory, options );

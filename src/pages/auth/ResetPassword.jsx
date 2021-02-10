@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import AuthLayout from '../../layout/authLayout'
 
-const ResetPassword = () => {
+const ResetPasswordPage = () => {
     return (
         <>
             <AuthLayout>
@@ -15,4 +15,4 @@ const ResetPassword = () => {
     )
 }
 
-export default ResetPassword;
+export default ResetPasswordPage;

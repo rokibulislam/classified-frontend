@@ -19,3 +19,4 @@ export const QueryBrand = gql`
 `;
 
 export const useBrandsQuery = () => useQuery(QueryBrands);
+export const useBrandQuery  = ( options ) => useQuery( QueryBrand, options );

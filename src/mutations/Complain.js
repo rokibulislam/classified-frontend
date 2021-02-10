@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 export const createComplainmutation = gql`
     mutation createComplain ( $description: String! ){
@@ -12,7 +12,7 @@ export const createComplainmutation = gql`
 `;
 
 export const updateComplainmutation = gql`
-    mutation updateComplain( $description: String! ){
+    mutation updateComplain( $id: ID!, $description: String! ){
         updateComplain (id: $id, input: {
             description: $description
         } ) {
@@ -30,3 +30,16 @@ export const deleteComplainmutation = gql`
         }
     }
 `;
+
+export const useCreateComplain = () => useMutation( createComplainmutation, {
+
+})
+
+export const useUpdateComplain = () => useMutation( updateComplainmutation, {
+
+})
+
+
+export const useDeleteComplain = () => useMutation( deleteComplainmutation, {
+
+})

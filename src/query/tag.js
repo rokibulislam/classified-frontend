@@ -18,4 +18,5 @@ export const QueryTag = gql`
   }
 `;
 
-export const useTagsQuery = () => useQuery(QueryTags);
+export const useTagsQuery  = () => useQuery( QueryTags );
+export const useTagQuery   = ( options ) => useQuery( QueryTag, options );

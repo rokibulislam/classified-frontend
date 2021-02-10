@@ -9,7 +9,7 @@ const AdminTopbar = (props) => {
     return (
         <> 
             <div className="row topbar">
-                <div class="col-lg-12">
+                <div className="col-lg-12">
                     <h3 className="navbar-brand"> Admin Topbar </h3>
                 </div>
             </div> 

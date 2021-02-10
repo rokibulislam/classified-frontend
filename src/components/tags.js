@@ -6,43 +6,57 @@ import { deleteTagsmutation } from '../mutations/Tags'
 
 const Tags = () => {
     const { loading, error, data } = useQuery(QueryTags);
-    const [ deleteTag ] = useMutation( deleteTagsmutation )
+    const [ deleteTag ] = useMutation( deleteTagsmutation, {
+        refetchQueries: [  {query: QueryTags } ],
+        onError: (error) => {
+            console.log( 'error' );
+        },
+        update: (store, response) => {
+            console.log( 'Delete' );
+            console.log( response );
+        }
+    } )
     
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
 
     const onDelete = (id) => {
-
-        deleteTag(
-            {
-                variables: {
-                    id: id
-                }
-            }).then( (response) => {
-                console.log(response);
-
-            }).catch(function(error) {
-                console.log(error);
-            });
+        deleteTag({
+            variables: { id: id }
+        })
     }
     
         
     return (
         <>
-            <Link to="/admin/tags/create"> create Tag </Link>
-            {
-                data.tags.map( ( { id, name } ) => {
-                    return (
-                        <>
-                            <div key={id}>
-                                {name} 
-                                <button onClick={() => { onDelete(id)}}> Delete </button>
-                                <Link to={`/admin/tags/${id}/edit`}> Edit </Link>
-                            </div> 
-                        </>
-                    )
-                })
-            } 
+            <Link className="btn btn-success" to="/admin/tags/create"> create Tag </Link>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> name </th>
+                        <th> Action </th>  
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {
+                        data.tags.map( ( { id, name } ) => {
+                            return (
+                                <>
+                                    <tr key={id}>
+                                        <td> {name} </td>
+                                        <td>
+                                            <button className="btn btn-danger" onClick={() => { onDelete(id)}}> Delete </button>
+                                            <Link className="btn btn-primary" to={`/admin/tags/${id}/edit`}> Edit </Link>
+                                        </td>
+                                    </tr> 
+                                </>
+                            )
+                        })
+                    }
+                </tbody>
+            </table>
         </>
     )
 }

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { gql, useMutation } from '@apollo/client';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, useHistory } from 'react-router-dom';
 import { signupmutation } from '../mutations/Signup'
 
-const Register = ( props ) => {
+const RegisterForm = ( props ) => {
+
+    const history = useHistory();
 
     const [state , setState] = useState({
         name: "",
@@ -12,7 +14,17 @@ const Register = ( props ) => {
         error: {}
     })
 
-    const [signup, { data }] = useMutation(signupmutation);
+    const [signup, { data }] = useMutation( signupmutation, {
+        onError: ( error ) => {
+            setState(prevState => ({
+                ...prevState,
+                error: error.message,
+            }))
+        },
+        update: ( store, response ) => {
+            history.push('/login');
+        }
+    });
 
     const handleChange = (e) => {
         const {name , value} = e.target   
@@ -24,37 +36,13 @@ const Register = ( props ) => {
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
-
-        try {
-            const payload = {
-                "name":  state.name,
-                "email":  state.email,
-                "password":state.password,
+        signup({
+            variables: {
+                name: state.name, 
+                email: state.email, 
+                password: state.password 
             }
-
-            console.log( payload );
-          
-            signup({
-                variables: {
-                    name: payload.name, 
-                    email: payload.email, 
-                    password: payload.password 
-                }
-            }).then( (result) => {
-               props.history.push('/');
-
-            }).catch(function(error) {
-                setState(prevState => ({
-                    ...prevState,
-                    error: error.message,
-                }))
-            });
-        
-
-        } catch (ex) {
-
-        }
-
+        })
     }
 
     const { email, password, error } = state;
@@ -100,4 +88,4 @@ const Register = ( props ) => {
     )
 }
 
-export default withRouter(Register);
+export default RegisterForm;

@@ -1,15 +1,16 @@
 import React from 'react'
 import AuthLayout from '../../layout/authLayout'
+import ForgetPassForm from '../../components/ForgetPassForm'
 
-const ForgetPassword = ( props ) => {
+const ForgetPasswordPage = ( props ) => {
     return (
         <>
             <AuthLayout> 
-                Forget Passowrd
+                <ForgetPassForm/>
             </AuthLayout>
         </>
     )
 }
 
 
-export default ForgetPassword;
+export default ForgetPasswordPage;

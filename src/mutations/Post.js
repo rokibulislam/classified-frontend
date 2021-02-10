@@ -1,11 +1,17 @@
-import { gql } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 export const createPostmutation = gql`
-    mutation createPost( $title: String!, $body: String! ){
+    mutation createPost( $title: String!, $body: String!, $categories: ID, $tags: ID,
+            $brands: ID
+        ){
         createPost (input: {
             title: $title,
             body:  $body
+            categories: $categories,
+            tags: $tags,
+            brands: $brands
         } ) {
+            id
             title
             body
         }
@@ -13,8 +19,8 @@ export const createPostmutation = gql`
 `;
 
 export const updatePostmutation = gql`
-    mutation updatePost( $title: String!, $body: String! ){
-        updatePost (id: $id, input: {
+    mutation updatePost( $id: ID!, $title: String!, $body: String! ){
+        updatePost ( id: $id, input: {
             title: $title,
             body:  $body
         } ) {
@@ -34,3 +40,16 @@ export const deletePostmutation = gql`
         }
     }
 `;
+
+export const useCreatePost = () => useMutation( createPostmutation, {
+
+})
+
+export const useUpdatePost = () => useMutation( updatePostmutation, {
+
+})
+
+
+export const useDeletePost = () => useMutation( deletePostmutation, {
+
+})

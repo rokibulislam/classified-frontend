@@ -1,20 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
 import AdminLayout from '../../layout/AdminLayout'
+import { updatePackagemutation } from '../../mutations/Package'
 import { QueryPackage } from '../../query/package'
 
 const PackageEdit = ( props  ) => {
-    const [name, setName] = useState('');
+    const [ name, setName ] = useState('');
     let { id } = useParams();
+
+    const [ updatePackage, mutationResult ] = useMutation( updatePackagemutation, {
+        onError: (error) => {
+            console.log( 'error' );
+        },
+        update: (store, response) => {
+            props.history.push('/admin/packages');
+        }
+    })
     
     const { loading, error, data } = useQuery(QueryPackage, {
         variables: { id },
+        onCompleted: ( data ) => setName(data.package.name)
     });
 
-    const handleSubmit = () => {
-
+    const handleSubmit = ( e ) => {
+        e.preventDefault();
+        
+        updatePackage({
+            variables: {
+                name: name,
+                id: id
+            }
+        })
     }
 
     if (loading) return null;

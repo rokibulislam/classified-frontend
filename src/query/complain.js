@@ -3,6 +3,7 @@ import { gql, useQuery } from '@apollo/client';
 export const QueryComplains = gql`
     query GetComplains {
         complains {
+            id
             description
         }
     }
@@ -17,4 +18,5 @@ export const QueryComplain = gql`
   }
 `;
 
-export const useComplainsQuery = () => useQuery(QueryComplains);
+export const useComplainsQuery = () => useQuery( QueryComplains );
+export const useComplainQuery  = ( options ) => useQuery( QueryComplain, options );

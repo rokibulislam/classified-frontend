@@ -1,20 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
+import { updateBrandmutation } from '../../mutations/Brands' 
 
 import AdminLayout from '../../layout/AdminLayout'
-import { QueryBrand } from '../../query/brand'
+import { QueryBrand, QueryBrands } from '../../query/brand'
 
 const BrandEdit = ( props  ) => {
     const [name, setName] = useState('');
+
+    const [ updateBrand, mutationResult ] = useMutation( updateBrandmutation, {
+        onError: (error) => {
+            console.log( 'error' );
+        },
+        update: (store, response) => {
+            props.history.push('/admin/brands')
+            console.log( response );
+        }
+    } );
+
     let { id } = useParams();
 
     const { loading, error, data } = useQuery(QueryBrand, {
         variables: { id },
+        onCompleted: ( data ) => {
+            setName( data.brand.name ) 
+        }
     });
 
-    const handleSubmit = () => {
-
+    const handleSubmit = ( e ) => {
+        e.preventDefault();
+        
+        updateBrand({
+            variables: {
+                name: name,
+                id: id
+            }
+        })
     }
 
     if (loading) return null;

@@ -1,21 +1,6 @@
 import jwtDecode from 'jwt-decode'
-import http from './httpService'
-
 const tokenKey = 'auth_token'
 
-http.setAuthToken(getJwt())
-
-export async function login(email, password) {
-  const { data } = await http.post('/auth/login', { email, password })
-}
-
-const register = user => {
-  return http.post('', {
-    email: user.email,
-    password: user.password,
-    name: user.name,
-  })
-}
 
 export function loginWithJwt(jwt) {
   localStorage.setItem(tokenKey, jwt)
@@ -51,11 +36,14 @@ export function getJwt() {
   return localStorage.getItem(tokenKey)
 }
 
+export function setJwt( token ) {
+  return localStorage.setItem(tokenKey, token )
+}
+
 export default {
-  login,
   loginWithJwt,
   logout,
   getCurrentUser,
   getJwt,
-  register,
+  setJwt
 }

@@ -13,3 +13,6 @@ export const signupmutation = gql`
   }
 `;
 
+export const useSignup = () => useMutation( signupmutation, {
+
+})

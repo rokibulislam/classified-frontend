@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 export const createPackagemutation = gql`
     mutation createPackage ( $name: String! ){
@@ -12,7 +12,7 @@ export const createPackagemutation = gql`
 `;
 
 export const updatePackagemutation = gql`
-    mutation updatePackage( $description: String! ){
+    mutation updatePackage( $id: ID! $name: String! ){
         updatePackage (id: $id, input: {
             name: $name
         } ) {
@@ -30,3 +30,17 @@ export const deletePackagemutation = gql`
         }
     }
 `;
+
+
+export const useCreatePackage = () => useMutation( createPackagemutation, {
+
+})
+
+export const useUpdatePackage = () => useMutation( updatePackagemutation, {
+
+})
+
+
+export const useDeletePackage = () => useMutation( deletePackagemutation, {
+
+})

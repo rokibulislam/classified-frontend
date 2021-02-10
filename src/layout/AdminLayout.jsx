@@ -7,7 +7,7 @@ const AdminLayout = props => {
       <>
         <AdminTopbar/>
         <div className="row">
-            <div class="col-lg-4">
+            <div className="col-lg-4">
                <AdminSidebar/>
             </div>
             <div class="col-lg-8">
