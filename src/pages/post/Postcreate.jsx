@@ -58,7 +58,7 @@ const PostCreate = ( props  ) => {
     if ( errortags ) return `Error! ${errortags.message}`;
     if ( errorbrands ) return `Error! ${errorbrands.message}`;
 
-    const renderSelect = ( options ) => {
+    const renderSelect = ( options, selectdata ) => {
         return options.map( ( { id, name }) => <option key={id} value={id}> {name} </option>)
     }
 
@@ -89,7 +89,7 @@ const PostCreate = ( props  ) => {
                             <label htmlFor=""> Categories </label>
                             <select name="categories" className="form-control" onChange={handleChange}>
                                 <option value=""> </option>
-                                { renderSelect( category.categories ) }
+                                { renderSelect( category.categories, category ) }
                             </select>
                         </div>
 
@@ -97,7 +97,7 @@ const PostCreate = ( props  ) => {
                             <label htmlFor=""> Tags </label>
                             <select name="tags" className="form-control" onChange={handleChange}>
                                 <option value=""> </option>
-                                { renderSelect( tag.tags ) }
+                                { renderSelect( tag.tags, tag ) }
                             </select>
                         </div>
 
@@ -105,7 +105,7 @@ const PostCreate = ( props  ) => {
                             <label htmlFor=""> Brands </label>
                             <select name="brands" className="form-control"  onChange={handleChange}>
                                 <option value=""> </option>
-                                { renderSelect( brand.brands ) }
+                                { renderSelect( brand.brands, brand ) }
                             </select>
                         </div>
 

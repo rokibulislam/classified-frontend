@@ -1,15 +1,15 @@
 import { gql, useMutation } from '@apollo/client';
 
 export const createPostmutation = gql`
-    mutation createPost( $title: String!, $body: String!, $categories: ID, $tags: ID,
-            $brands: ID
+    mutation createPost( $title: String!, $body: String!, $categories: String, $tags: String,
+            $brands: String
         ){
         createPost (input: {
             title: $title,
             body:  $body
-            categories: $categories,
-            tags: $tags,
-            brands: $brands
+            category: $categories,
+            tag: $tags,
+            brand: $brands
         } ) {
             id
             title
@@ -19,10 +19,14 @@ export const createPostmutation = gql`
 `;
 
 export const updatePostmutation = gql`
-    mutation updatePost( $id: ID!, $title: String!, $body: String! ){
+    mutation updatePost( $id: ID!, $title: String!, $body: String!,
+        $categories: String, $tags: String, $brands: String ) {
         updatePost ( id: $id, input: {
             title: $title,
-            body:  $body
+            body:  $body,
+            category: $categories,
+            tag: $tags,
+            brand: $brands
         } ) {
             id
             title

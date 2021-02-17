@@ -2,10 +2,13 @@ import { gql, useQuery } from '@apollo/client';
 
 export const QueryPackages = gql`
     query GetPackages {
-    packages {
-        id
-        name
-    }
+      packages {
+          id
+          name
+          amount
+          duration
+          allowedpost
+      }
     }
 `;
 
@@ -14,6 +17,9 @@ export const QueryPackage = gql`
     package( id: $id ) {
       id
       name
+      amount
+      duration
+      allowedpost
     }
   }
 `;

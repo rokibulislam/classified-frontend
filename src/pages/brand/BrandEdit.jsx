@@ -9,6 +9,7 @@ import { QueryBrand, QueryBrands } from '../../query/brand'
 
 const BrandEdit = ( props  ) => {
     const [name, setName] = useState('');
+    const [ description, setDescription ] = useState('');
 
     const [ updateBrand, mutationResult ] = useMutation( updateBrandmutation, {
         onError: (error) => {
@@ -26,6 +27,7 @@ const BrandEdit = ( props  ) => {
         variables: { id },
         onCompleted: ( data ) => {
             setName( data.brand.name ) 
+            setDescription( data.brand.description ) 
         }
     });
 
@@ -35,6 +37,7 @@ const BrandEdit = ( props  ) => {
         updateBrand({
             variables: {
                 name: name,
+                description: description,
                 id: id
             }
         })
@@ -51,6 +54,13 @@ const BrandEdit = ( props  ) => {
                         <label> Name  </label>
                         <input type="text" className="form-control" name="name" placeholder="Enter Name" 
                             value={name} onChange={ (e) => setName( e.target.value ) } 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label> Description  </label>
+                        <input type="text" className="form-control" name="description" placeholder="Enter Description" 
+                            value={description} onChange={ (e) => setDescription( e.target.value ) } 
                         />
                     </div>
 

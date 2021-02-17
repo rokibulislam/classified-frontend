@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import Language from '../languages'
+import './topbar.css'
 
 const AdminTopbar = (props) => {
 
@@ -8,11 +10,15 @@ const AdminTopbar = (props) => {
     
     return (
         <> 
+        <div className="classified-admin-header">
             <div className="row topbar">
-                <div className="col-lg-12">
-                    <h3 className="navbar-brand"> Admin Topbar </h3>
+                <div className="col-lg-6">
+                </div>
+                <div className="col-lg-6">
+                    <Language/>
                 </div>
             </div> 
+        </div>
         </>
     )
 }

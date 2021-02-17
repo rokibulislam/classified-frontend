@@ -15,7 +15,18 @@ const CategoryCreate = ( props  ) => {
         },
         update: (store, response) => {
             props.history.push('/admin/categories');
+        },
+       /*
+        update(cache, { data : { createCategory } }) {
+            cache.writeQuery({
+                query: QueryCategories,
+                variables: { id: createCategory.id},
+                createCategory
+            })
+
+            props.history.push('/admin/categories');
         }
+        */
     } );
 
     const handleSubmit = ( e ) => {

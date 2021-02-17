@@ -1,19 +1,24 @@
 import React from 'react'
 import AdminSidebar from '../components/admin/adminSidebar'
 import AdminTopbar from '../components/admin/adminTopbar'
+import './layout.css';
 
 const AdminLayout = props => {
     return (
       <>
-        <AdminTopbar/>
+      <div className="classified-admin">
         <div className="row">
-            <div className="col-lg-4">
-               <AdminSidebar/>
-            </div>
-            <div class="col-lg-8">
-              { props.children }
-            </div>
+          <div className="col-lg-2">
+            <AdminSidebar/>
+          </div>
+          <div class="main-content col-lg-10">
+              <AdminTopbar/>
+              <div className="content-body">
+                { props.children }
+              </div>
+          </div>
         </div>
+      </div>
       </>
     )
 }

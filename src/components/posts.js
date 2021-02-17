@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { Link, useHistory } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
 import { QueryPosts } from '../query/post'
 import { deletePostmutation } from '../mutations/Post'
 
 const Posts = () => {
     let history = useHistory();
+    const { t } = useTranslation();
     const { loading, error, data } = useQuery(QueryPosts);
     const [ deletePost ] = useMutation( deletePostmutation, {
         refetchQueries: [ { query: QueryPosts } ],
@@ -36,23 +39,31 @@ const Posts = () => {
         <table class="table">
             <thead>
                 <tr>
-                    <th> title </th>
-                    <th> body  </th>
-                    <th> Action </th>  
+                    <th> { t('title') } </th>
+                    <th> { t('body') }  </th>
+                    <th> Category </th>
+                    <th> tag </th>
+                    <th> brand </th>
+                    <th> Creator </th>
+                    <th> { t('Action') } </th>  
                 </tr>
             </thead>
 
             <tbody>
                 {
-                    data.posts.map( ( { id, title, body } ) => {
+                    data.posts.map( ( { id, title, body, category, tag, brand, user } ) => {
                         return (
                             <>
                                 <tr key={id}>
                                    <td> {title} </td>
                                    <td> {body} </td>
+                                   <td> { category.map( item => item.name ) }  </td>
+                                   <td> { tag.map( item => item.name ) }  </td>
+                                   <td> { brand.map( item => item.name ) }  </td>
+                                   <td> { user.name } </td>
                                    <td>
-                                        <button className="btn btn-danger" onClick={() => { onDelete(id)}}> Delete </button>
-                                        <Link className="btn btn-primary" to={`/admin/posts/${id}/edit`}> Edit </Link>
+                                        <button className="btn btn-danger" onClick={() => { onDelete(id)}}> { t('Delete') } </button>
+                                        <Link className="btn btn-primary" to={`/admin/posts/${id}/edit`}> { t('Edit') } </Link>
                                     </td>
                                 </tr> 
                             </>

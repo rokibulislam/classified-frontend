@@ -40,6 +40,14 @@ import ReportPage from './pages/report/reports'
 
 import ProtectedRoute from './components/common/protectedRoute'
 
+import AdminPosttAttribute from './pages/attribute/attribute'
+import AttributeCreate from './pages/attribute/AttributeCreate'
+import AttributeEdit from './pages/attribute/AttributeEdit'
+
+import AdminCoupon from './pages/coupon/coupon'
+import CouponCreate from './pages/coupon/CouponCreate'
+import CouponEdit from './pages/coupon/CouponEdit'
+
 import { logout } from './services/authService'
 
 const routes = () => {
@@ -51,6 +59,12 @@ const routes = () => {
                 <Route path='/register' component={RegisterPage} />
                 <Route path='/forget-password' component={ForgetPasswordPage}/>
                 <Route path='/reset-password' component={ResetPasswordPage}/>
+                <Route path='/admin/coupon/create' component={CouponCreate}/>
+                <Route path='/admin/coupon/:id/edit' component={CouponEdit}/>              
+                <Route path='/admin/coupon' component={AdminCoupon}/>
+                <Route path='/admin/attribute/create' component={AttributeCreate}/>
+                <Route path='/admin/attribute/:id/edit' component={AttributeEdit}/>              
+                <Route path='/admin/attribute' component={AdminPosttAttribute}/>
                 <ProtectedRoute path='/admin/posts/create'  component={PostCreate} />
                 <ProtectedRoute path='/admin/posts/:id/edit'  component={PostEdit} />
                 <ProtectedRoute path='/admin/posts'  component={AdminPosts} />

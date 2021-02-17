@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { Link, withRouter } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
 import { QueryCategories } from '../query/category'
 import { deleteCategorymutation } from '../mutations/Categories'
 
 const Categories = () => {
-  
     const { loading, error, data } = useQuery(QueryCategories);
-  
+    const { t } = useTranslation()
     const [ deleteCategory ] = useMutation( deleteCategorymutation, {
         refetchQueries: [  {query: QueryCategories} ],
         onError: (error) => {
@@ -38,9 +39,9 @@ const Categories = () => {
             <table class="table">
                 <thead>
                     <tr>
-                        <th> name </th>
-                        <th> description </th>
-                        <th> Action </th>  
+                        <th> { t('name') } </th>
+                        <th> { t('description ') }</th>
+                        <th> { t('Action') } </th>  
                     </tr>
                 </thead>
 
@@ -53,8 +54,8 @@ const Categories = () => {
                                         <td> {name} </td>
                                         <td> {description} </td>
                                         <td>
-                                            <button className="btn btn-danger" onClick={() => { onDelete(id)}}> Delete </button>
-                                            <Link className="btn btn-primary" to={`/admin/categories/${id}/edit`}> Edit</Link>
+                                            <button className="btn btn-danger" onClick={() => { onDelete(id)}}> { t('Delete') } </button>
+                                            <Link className="btn btn-primary" to={`/admin/categories/${id}/edit`}>{ t(' Edit' ) } </Link>
                                         </td>
                                     </tr> 
                                 </>

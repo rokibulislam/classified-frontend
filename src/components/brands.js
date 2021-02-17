@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { Link, withRouter } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { QueryBrands } from '../query/brand'
 import { deleteBrandmutation } from '../mutations/Brands'
 
 const Brands = ( props ) => {
+    const { t } = useTranslation();
     const { loading, error, data }  = useQuery(QueryBrands);
     const [ deleteBrand ] = useMutation( deleteBrandmutation, {
         refetchQueries: [  {query: QueryBrands} ],
@@ -34,23 +36,23 @@ const Brands = ( props ) => {
         <table class="table">
             <thead>
                 <tr>
-                    <th> name </th>
-                    <th> Description </th>
-                    <th> Action </th>  
+                    <th> { t('name') } </th>
+                    <th> { t('description') } </th>
+                    <th> { t('Action') } </th>  
                 </tr>
             </thead>
 
             <tbody>
             {
-                data.brands.map( ( { id, name } ) => {
+                data.brands.map( ( { id, name, description } ) => {
                     return (
                         <>
                             <tr key={id}>
                                <td> {name} </td>
-                               <td> </td>
+                               <td> { description } </td>
                                <td>
-                                    <button className="btn btn-danger" onClick={() => { onDelete(id)}}> Delete </button>
-                                    <Link className="btn btn-primary" to={`/admin/brands/${id}/edit`}> Edit </Link>
+                                    <button className="btn btn-danger" onClick={() => { onDelete(id)}}> { t('Delete') }  </button>
+                                    <Link className="btn btn-primary" to={`/admin/brands/${id}/edit`}> { t('Edit') } </Link>
                                 </td>
                             </tr> 
                         </>

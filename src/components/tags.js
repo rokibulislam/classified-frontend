@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { Link, withRouter } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
 import { QueryTags } from '../query/tag'
 import { deleteTagsmutation } from '../mutations/Tags'
 
 const Tags = () => {
+    const { t } = useTranslation();
     const { loading, error, data } = useQuery(QueryTags);
     const [ deleteTag ] = useMutation( deleteTagsmutation, {
         refetchQueries: [  {query: QueryTags } ],
@@ -34,21 +37,23 @@ const Tags = () => {
             <table class="table">
                 <thead>
                     <tr>
-                        <th> name </th>
-                        <th> Action </th>  
+                        <th> { t('name') } </th>
+                        <th> { t('description') } </th>
+                        <th> { t('Action') } </th>  
                     </tr>
                 </thead>
 
                 <tbody>
                     {
-                        data.tags.map( ( { id, name } ) => {
+                        data.tags.map( ( { id, name, description } ) => {
                             return (
                                 <>
                                     <tr key={id}>
                                         <td> {name} </td>
+                                        <td> {description} </td>
                                         <td>
-                                            <button className="btn btn-danger" onClick={() => { onDelete(id)}}> Delete </button>
-                                            <Link className="btn btn-primary" to={`/admin/tags/${id}/edit`}> Edit </Link>
+                                            <button className="btn btn-danger" onClick={() => { onDelete(id)}}> { t('Delete') } </button>
+                                            <Link className="btn btn-primary" to={`/admin/tags/${id}/edit`}> { t('Edit') } </Link>
                                         </td>
                                     </tr> 
                                 </>

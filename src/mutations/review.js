@@ -1,12 +1,16 @@
 import { gql, useMutation } from '@apollo/client';
 
 export const createReviewmutation = gql`
-    mutation createReview ( $name: String! ){
+    mutation createReview ( $name: String!, $rating: String!, $comment: String! ){
         createReview (input: {
             name: $name,
+            rating: $rating,
+            comment: $comment,
         } ) {
             id
             name
+            rating,
+            comment
         }
     }
 `;

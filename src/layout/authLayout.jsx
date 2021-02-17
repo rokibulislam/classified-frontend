@@ -1,7 +1,9 @@
 import React from 'react'
+import './layout.css';
 
 const authLayout = (props) => {
     return (
+    <div className="classified-admin">
         <div className="row">
             <div className="container">
                 <div className="flex-center">
@@ -9,6 +11,7 @@ const authLayout = (props) => {
                 </div>
             </div>
         </div>
+    </div>
     )
 }
 

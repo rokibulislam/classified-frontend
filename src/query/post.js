@@ -6,6 +6,22 @@ export const QueryPosts = gql`
       id
       title
       body
+      category {
+        id
+        name
+      }
+      tag {
+        id
+        name
+      }
+      brand {
+        id
+        name
+      }
+      user {
+        id
+        name
+      }
     }
   }
 `;
@@ -16,6 +32,22 @@ export const QueryPost = gql`
       id
       title
       body
+      category {
+        id
+        name
+      }
+      tag {
+        id
+        name
+      }
+      brand {
+        id
+        name
+      }
+      user {
+        id
+        name
+      }
     }
   }
 `;

@@ -8,9 +8,9 @@ import { QueryTag } from '../../query/tag'
 import { updateTagsmutation } from '../../mutations/Tags' 
 
 const TagEdit = ( props  ) => {
-    
-    const [name, setName] = useState('');
-    
+    const [ name, setName] = useState('');
+    const [ description, setDescription ] = useState('');
+
     const [ updateTag, mutationResult ] = useMutation( updateTagsmutation, {
         onError: (error) => {
             console.log( 'error' );
@@ -26,6 +26,7 @@ const TagEdit = ( props  ) => {
         variables: { id },
         onCompleted: ( data ) => {
             setName( data.tag.name ) 
+            setDescription( data.tag.description ) 
         }
     });
 
@@ -35,6 +36,7 @@ const TagEdit = ( props  ) => {
         updateTag({
             variables: {
                 name: name,
+                description: description,
                 id: id
             }
         })
@@ -57,7 +59,14 @@ const TagEdit = ( props  ) => {
                     </div>
 
                     <div className="form-group">
-                        <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> Update Category </button> 
+                        <label> Description  </label>
+                        <input type="text" className="form-control" name="description" placeholder="Enter Description" 
+                            value={description} onChange={ (e) => setDescription( e.target.value ) } 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> Update Tag </button> 
                     </div> 
                 </form> 
             </AdminLayout>

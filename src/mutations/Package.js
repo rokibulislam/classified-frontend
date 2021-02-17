@@ -1,23 +1,41 @@
 import { gql, useMutation } from '@apollo/client';
 
 export const createPackagemutation = gql`
-    mutation createPackage ( $name: String! ){
+    mutation createPackage ( $name: String!, 
+        $amount: String!,
+        $duration: String!,
+        $allowedpost: String!
+    ) {
         createPackage (input: {
             name: $name,
+            amount: $amount,
+            duration: $duration,
+            allowedpost: $allowedpost,
         } ) {
             id
             name
+            amount
+            duration
+            allowedpost
         }
     }
 `;
 
 export const updatePackagemutation = gql`
-    mutation updatePackage( $id: ID! $name: String! ){
+    mutation updatePackage( $id: ID! $name: String!,$amount: String!,
+        $duration: String!,
+        $allowedpost: String! ){
         updatePackage (id: $id, input: {
-            name: $name
+            name: $name,
+            amount: $amount,
+            duration: $duration,
+            allowedpost: $allowedpost,
         } ) {
             id
             name
+            amount
+            duration
+            allowedpost
         }
     }
 `;
@@ -27,6 +45,9 @@ export const deletePackagemutation = gql`
         deletePackage (id: $id) {
             id
             name
+            amount
+            duration
+            allowedpost
         }
     }
 `;

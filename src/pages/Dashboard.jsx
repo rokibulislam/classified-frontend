@@ -7,6 +7,9 @@ const AdminDashboard = () => {
         <>
             <AdminLayout>
                <h2> Dashboard </h2>
+               <div className="row">
+
+               </div>
             </AdminLayout>
         </>
     )

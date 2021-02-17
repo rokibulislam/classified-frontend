@@ -1,17 +1,19 @@
 import { gql, useQuery } from '@apollo/client';
 
 export const QueryReviews = gql`
-  query GetBrands {
-    brands {
+  query GetReviews {
+    reviews {
       id
       name
+      rating
+      comment
     }
   }
 `;
 
 export const QueryReview = gql`
-  query getBrand( $id: ID!)  {
-    brand( id: $id ) {
+  query getReview( $id: ID!)  {
+    review( id: $id ) {
       id
       name
     }

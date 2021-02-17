@@ -8,7 +8,14 @@ import { updatePackagemutation } from '../../mutations/Package'
 import { QueryPackage } from '../../query/package'
 
 const PackageEdit = ( props  ) => {
-    const [ name, setName ] = useState('');
+    const [state , setState] = useState({
+        name : "",
+        amount : "",
+        duration: "",
+        allowedpost: "",
+        error: {}
+    })
+
     let { id } = useParams();
 
     const [ updatePackage, mutationResult ] = useMutation( updatePackagemutation, {
@@ -22,15 +29,34 @@ const PackageEdit = ( props  ) => {
     
     const { loading, error, data } = useQuery(QueryPackage, {
         variables: { id },
-        onCompleted: ( data ) => setName(data.package.name)
+        onCompleted: ( data ) => {
+            setState(prevState => ({
+                ...prevState,
+                name     : data.package.name,
+                amount   : data.package.amount,
+                duration : data.package.duration,
+                allowedpost : data.package.allowedpost
+            }))
+        }
     });
+
+    const handleChange = (e) => {
+        const {name , value} = e.target   
+        setState(prevState => ({
+            ...prevState,
+            [name] : value
+        }))
+    }
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
         
         updatePackage({
             variables: {
-                name: name,
+                name: state.name,
+                amount: state.amount,
+                duration: state.duration,
+                allowedpost: state.allowedpost,
                 id: id
             }
         })
@@ -44,10 +70,32 @@ const PackageEdit = ( props  ) => {
         <>
             <AdminLayout>
                 <form className="loginform">     
+                
                     <div className="form-group">
                         <label> Name  </label>
                         <input type="text" className="form-control" name="name" placeholder="Enter Name" 
-                            value={name} onChange={ (e) => setName( e.target.value ) } 
+                            value={state.name} onChange={handleChange} 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label> Amount  </label>
+                        <input type="text" className="form-control" name="amount" placeholder="Enter Amount" 
+                            value={state.amount} onChange={handleChange} 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label> Duration  </label>
+                        <input type="text" className="form-control" name="duration" placeholder="Enter Duration" 
+                            value={state.duration} onChange={handleChange} 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label> Allowed Post  </label>
+                        <input type="text" className="form-control" name="allowedpost" placeholder="Enter Allowed Post" 
+                            value={state.allowedpost} onChange={handleChange } 
                         />
                     </div>
 

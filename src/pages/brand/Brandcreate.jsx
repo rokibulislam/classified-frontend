@@ -7,6 +7,8 @@ import { QueryBrands } from '../../query/brand'
 
 const BrandCreate = ( props  ) => {
     const [name, setName] = useState('');
+    const [ description, setDescription ] = useState('');
+
     const [createBrand, { data }] = useMutation( createBrandmutation, {
         refetchQueries: [ { query: QueryBrands } ],
         onError: (error) => {
@@ -22,7 +24,7 @@ const BrandCreate = ( props  ) => {
         e.preventDefault();
 
         createBrand({
-            variables: { name: name }
+            variables: { name: name, description: description }
         })
     }
 
@@ -34,6 +36,13 @@ const BrandCreate = ( props  ) => {
                     <label> Name  </label>
                     <input type="text" className="form-control" name="name" placeholder="Enter Name" 
                         value={name} onChange={ (e) => setName( e.target.value ) } 
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label> Description  </label>
+                    <input type="text" className="form-control" name="description" placeholder="Enter Description" 
+                        value={description} onChange={ (e) => setDescription( e.target.value ) } 
                     />
                 </div>
 

@@ -5,6 +5,7 @@ export const QueryTags = gql`
         tags {
             id
             name
+            description
         }
     }
 `;
@@ -14,6 +15,7 @@ export const QueryTag = gql`
     tag( id: $id ) {
       id
       name
+      description
     }
   }
 `;

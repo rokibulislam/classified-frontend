@@ -5,6 +5,7 @@ export const QueryBrands = gql`
     brands {
       id
       name
+      description
     }
   }
 `;
@@ -14,6 +15,7 @@ export const QueryBrand = gql`
     brand( id: $id ) {
       id
       name
+      description
     }
   }
 `;

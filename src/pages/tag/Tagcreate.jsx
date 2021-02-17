@@ -6,7 +6,9 @@ import { createTagsmutation } from '../../mutations/Tags'
 import { QueryTags } from '../../query/tag'
 
 const TagCreate = ( props  ) => {
-    const [name, setName] = useState('');
+    const [ name, setName ] = useState('');
+    const [ description, setDescription ] = useState('');
+
     const [createTags, { data }] = useMutation( createTagsmutation,{
         refetchQueries: [ { query: QueryTags } ],
         onError: (error) => {
@@ -22,7 +24,8 @@ const TagCreate = ( props  ) => {
         
         createTags({
             variables: {
-                name: name
+                name: name,
+                description: description,
             }
         })
     }
@@ -35,6 +38,13 @@ const TagCreate = ( props  ) => {
                     <label> Name  </label>
                     <input type="text" className="form-control" name="name" placeholder="Enter Name" 
                         value={name} onChange={ (e) => setName( e.target.value ) } 
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label> Description  </label>
+                    <input type="text" className="form-control" name="description" placeholder="Enter Description" 
+                        value={description} onChange={ (e) => setDescription( e.target.value ) } 
                     />
                 </div>
 
