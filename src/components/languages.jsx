@@ -1,17 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'
+import {getActiveLanguage} from '../util/function'
 import FlagNor from '../images/svg/flag-nor'
 import FlagEn from '../images/svg/flag-en'
 
 const Language = props => {
   const { t } = useTranslation()
-  const [activeLang, updateActiveLang] = useState('en')
+  const [activeLang, updateActiveLang] = useState( getActiveLanguage() )
 
   function handleClick(lang) {
     i18n.changeLanguage(lang)
     updateActiveLang(lang)
   }
+
+  useEffect(() => {
+    localStorage.setItem("activeLanguage", activeLang);
+  }, [activeLang])
 
   return (
     <div id={'mw-lang-switch'} {...props}>
