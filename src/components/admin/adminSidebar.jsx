@@ -37,6 +37,7 @@ const AdminSidebar = (props) => {
                 <li> <Link to="/admin/reports" className="sidebar-nav-link"> { t('Reports') } </Link> </li> 
                 <li> <Link to="/admin/reviews" className="sidebar-nav-link">  { t('Reviews') } </Link> </li> 
                 <li> <Link to="/admin/profile" className="sidebar-nav-link"> { t('Profile') } </Link> </li> 
+                <li> <Link to="/admin/users" className="sidebar-nav-link"> { t('User') } </Link> </li> 
                 { !auth.getCurrentUser() ? (
                     <>
                         <li> <Link to="/login" className="sidebar-nav-link"> { t('Login') } </Link> </li> 

@@ -1,13 +1,13 @@
 import React from 'react'
 import AdminLayout from '../../layout/AdminLayout'
-import Orders from '../../components/orders'
-
-const AdminOrders = ( props ) => {
+import Users from '../../components/users'
+const UserPage = ( props ) => {
     return (
         <AdminLayout>
-            <Orders />
+            UserList
+            <Users/>
         </AdminLayout>
     )
 }
 
-export default AdminOrders;
+export default UserPage

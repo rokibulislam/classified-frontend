@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const ProfileForm = () => {
-    
+    const {  t } = useTranslation();
     const [ state, setState ] = useState({
         firstname: "",
         lastname: "",
@@ -52,7 +53,7 @@ const ProfileForm = () => {
 
                 <div className="col-md-4">
                     <div class="form-group">
-                        <label> First Name  </label>
+                        <label> { t( 'First Name' ) } </label>
                         <input type="text" className="form-control" name="firstname" placeholder="Enter Your Email" 
                             value={state.firstname} onChange={handleChange}
                         />
@@ -61,7 +62,7 @@ const ProfileForm = () => {
 
                 <div className="col-md-4">
                     <div class="form-group">
-                        <label> Last Name  </label>
+                        <label> { t( 'Last Name' ) }  </label>
                         <input type="text" className="form-control" name="lastname" placeholder="Enter Your Email" 
                             value={state.lastname} onChange={handleChange}
                         />
@@ -70,7 +71,7 @@ const ProfileForm = () => {
 
                 <div className="col-md-4">
                     <div class="form-group">
-                        <label> Postcode </label>
+                        <label> { t( 'Postcode' ) } </label>
                         <input type="text" className="form-control" name="postcode" placeholder="Enter Your Postcode" 
                             value={address.postcode} onChange={handleAddressChange}
                         />
@@ -79,7 +80,7 @@ const ProfileForm = () => {
 
                 <div className="col-md-4">
                     <div class="form-group">
-                        <label> City </label>
+                        <label> { t( 'City') } </label>
                         <input type="text" className="form-control" name="city" placeholder="Enter Your Postcode" 
                             value={address.city} onChange={handleAddressChange}
                         />
@@ -89,7 +90,7 @@ const ProfileForm = () => {
                 <div className="col-md-4">
 
                     <div class="form-group">
-                        <label> Country </label>
+                        <label> { t( 'Country') } </label>
                         <input type="text" className="form-control" name="country" placeholder="Enter Your Postcode" 
                             value={address.country} onChange={handleAddressChange}
                         />
@@ -101,7 +102,7 @@ const ProfileForm = () => {
 
             <div className="row">
                 <div className="form-group">
-                    <button type="submit"  className="btn btn-primary mt-3 btn-block" onClick={handleSubmit}> Update Profile </button> 
+                    <button type="submit"  className="btn btn-primary mt-3 btn-block" onClick={handleSubmit}> { t( 'Update Profile') } </button> 
                 </div> 
             </div>
         </form>

@@ -37,7 +37,7 @@ const AttributeCreate = ( props ) => {
                     </div>
 
                     <div className="form-group">
-                        <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> Create Brand </button> 
+                        <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> Create Attribute </button> 
                     </div> 
                 </form>
             </AdminLayout>

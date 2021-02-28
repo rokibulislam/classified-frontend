@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AuthLayout from '../../layout/authLayout'
+import ResetPassForm from '../../components/ResetPassForm'
 
 const ResetPasswordPage = () => {
     return (
@@ -7,7 +8,7 @@ const ResetPasswordPage = () => {
             <AuthLayout>
                 <div className="row">
                     <div className="col-md-4">
-                        Reset Password
+                        <ResetPassForm />
                     </div>
                 </div>
             </AuthLayout>

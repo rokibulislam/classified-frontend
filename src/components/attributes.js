@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, memo } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { QueryAttributes } from '../query/attribute'
 import { deleteAttributemutation  } from '../mutations/Attributes'
@@ -64,4 +64,4 @@ const Attributes = ( props ) => {
     )
 }
 
-export default withRouter( Attributes );
+export default memo( Attributes );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { gql, useMutation } from '@apollo/client';
 import { Link, useHistory } from 'react-router-dom'
 import { loginmutation, useLoginMutation } from '../mutations/Login' 
@@ -6,7 +7,8 @@ import authService from '../services/authService'
 
 const LoginForm = ( props ) => {
     let history = useHistory();
-    
+    const { t } = useTranslation()
+
     const [state , setState] = useState({
         email : "",
         password : "",
@@ -58,11 +60,11 @@ const LoginForm = ( props ) => {
                 <div className="row">
 
                     <div className="col-md-6">
-                        Login
+                        { t('login') }
                     </div>
 
                     <div className="col-md-6">
-                        <Link to="/register"> create an account </Link>
+                        <Link to="/register"> { t('create an account') } </Link>
                     </div>
 
                 </div>
@@ -70,27 +72,33 @@ const LoginForm = ( props ) => {
                 <form className="loginform"> 
                     
                     <div class="form-group">
-                        <label> Email  </label>
+                        <label> { t('email') }  </label>
                         <input type="email" className="form-control" name="email" placeholder="Enter Your Email" 
                             value={state.email} onChange={handleChange}
                         />
+                        { error.name && (
+                            <span className='text-danger'> {error.email} </span>
+                        )}
                     </div>
 
                     <div className="form-group">
-                        <label> Password  </label>
+                        <label> { t('password') }  </label>
                         <input type="password" className="form-control" name="password" placeholder="Enter Your Password"   
                             value={state.password} onChange={handleChange}
                         />
+                        { error.password && (
+                            <span className='text-danger'> {error.password} </span>
+                        )}
                     </div>
 
                     <div className="row">
                         <div className="col-md-6">
-                            <Link to="/forget-password"> Forget Password? </Link>
+                            <Link to="/forget-password"> { t('Forget Password?') } </Link>
                         </div>
                     </div>
 
                     <div className="form-group">
-                        <button type="submit"  className="btn btn-primary mt-3 btn-block" onClick={handleSubmit}> Login </button> 
+                        <button type="submit"  className="btn btn-primary mt-3 btn-block" onClick={handleSubmit}> { t( 'Login') } </button> 
                     </div> 
                 </form>
             </div>

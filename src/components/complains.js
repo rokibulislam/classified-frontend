@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, memo } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { QueryComplains } from '../query/complain'
 import { deleteComplainmutation } from '../mutations/Complain'
 
@@ -65,4 +65,4 @@ const Complains = () => {
     )
 }
 
-export default Complains;
+export default memo( Complains );

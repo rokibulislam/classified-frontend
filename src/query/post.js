@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 
-export const QueryPosts = gql`
+export const QueryPostsWithoutPagination = gql`
   query GetPosts {
     posts{
       id
@@ -21,6 +21,38 @@ export const QueryPosts = gql`
       user {
         id
         name
+      }
+    }
+  }
+`;
+
+export const QueryPosts = gql`
+  query GetPosts( $cursor: String ) {
+    posts(cursor: $cursor) {
+      postFeed {
+        id
+        title
+        body
+        category {
+          id
+          name
+        }
+        tag {
+          id
+          name
+        }
+        brand {
+          id
+          name
+        }
+        user {
+          id
+          name
+        }
+      }
+      pageInfo {
+        nextPageCursor,
+        hasNextPage
       }
     }
   }

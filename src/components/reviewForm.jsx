@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery } from '@apollo/client';
 import { createReviewmutation } from '../mutations/review'
 import { QueryReviews } from '../query/review'
 
 const ReviewForm = ( props  ) => {
+    const { t } = useTranslation();
+
     const [state , setState] = useState({
         name : "",
         rating : "",
@@ -46,28 +49,28 @@ const ReviewForm = ( props  ) => {
                     <form className="loginform"> 
                         
                         <div className="form-group">
-                            <label> Name  </label>
+                            <label> { t('Name') }  </label>
                             <input type="text" className="form-control" name="name" placeholder="Enter Your Title" 
                                 value={state.name} onChange={handleChange}
                             />
                         </div>
 
                         <div className="form-group">
-                            <label> Rating  </label>
+                            <label> { t('Rating') }  </label>
                             <input type="text" className="form-control" name="rating" placeholder="Enter Your description"   
                                 value={state.rating} onChange={handleChange}
                             />
                         </div>
 
                         <div className="form-group">
-                            <label> Comment  </label>
+                            <label> { t('Comment') }  </label>
                             <input type="text" className="form-control" name="comment" placeholder="Enter Your description"   
                                 value={state.comment} onChange={handleChange}
                             />
                         </div>
 
                         <div className="form-group">
-                            <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> Create Review </button> 
+                            <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> { t('Create Review') } </button> 
                         </div> 
                     </form>
                 </div>

@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode'
-const tokenKey = 'auth_token'
-
+const tokenKey        = 'auth_token'
+const refreshtokenkey = 'refresh_token'
 
 export function loginWithJwt(jwt) {
   localStorage.setItem(tokenKey, jwt)
@@ -40,10 +40,16 @@ export function setJwt( token ) {
   return localStorage.setItem(tokenKey, token )
 }
 
+export function setTokenToLocalStorage( response ) {
+  // localStorage.setItem( tokenKey, response.data.jwtToken )
+  // localStorage.setItem( refreshtokenkey, response.data.refreshToken )
+}
+
 export default {
   loginWithJwt,
   logout,
   getCurrentUser,
   getJwt,
-  setJwt
+  setJwt,
+  setTokenToLocalStorage
 }

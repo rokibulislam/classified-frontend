@@ -48,6 +48,8 @@ import AdminCoupon from './pages/coupon/coupon'
 import CouponCreate from './pages/coupon/CouponCreate'
 import CouponEdit from './pages/coupon/CouponEdit'
 
+import UserPage from './pages/user/User'
+
 import { logout } from './services/authService'
 
 const routes = () => {
@@ -87,6 +89,8 @@ const routes = () => {
                 <ProtectedRoute path='/admin/profile'  component={Profile} />
                 <ProtectedRoute path='/admin/reviews'  component={ReviewPage} />
                 <ProtectedRoute path='/admin/reports'  component={ReportPage} />
+
+                <ProtectedRoute path='/admin/users'  component={UserPage} />
                 
             </Switch>
         </Router>

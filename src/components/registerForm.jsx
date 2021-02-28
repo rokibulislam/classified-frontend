@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { gql, useMutation } from '@apollo/client';
 import { Link, withRouter, useHistory } from 'react-router-dom';
 import { signupmutation } from '../mutations/Signup'
 
 const RegisterForm = ( props ) => {
-
     const history = useHistory();
+    const { t } = useTranslation()
 
     const [state , setState] = useState({
         name: "",
@@ -56,31 +57,40 @@ const RegisterForm = ( props ) => {
         <div className="col-md-offset-4 col-md-4">
             <form className="loginform"> 
                 <div className="form-group">
-                    <label> Name  </label>
+                    <label> { t('name') }  </label>
                     <input type="name" className="form-control" name="name" placeholder="Enter Your Name" 
                         value={state.name} onChange={handleChange}
                     />
+                    {error.name && (
+                        <span className='text-danger'> {error.name} </span>
+                    )}
                 </div>
                 <div className="form-group">
-                    <label> Email  </label>
+                    <label> { t('email') }  </label>
                     <input type="email" className="form-control" name="email" placeholder="Enter Your Email" 
                         value={state.email} onChange={handleChange}
                     />
+                    {error.email && (
+                        <span className='text-danger'> {error.email} </span>
+                    )}
                 </div>
 
                 <div className="form-group">
-                    <label> Password  </label>
+                    <label> { t('password') }  </label>
                     <input type="password" className="form-control" name="password" placeholder="Enter Your Password"   
                         value={state.password} onChange={handleChange}
                     />
+                    {error.password && (
+                        <span className='text-danger'> {error.password} </span>
+                    )}
                 </div>
 
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary"  onClick={handleSubmit}> Register  </button>  
+                    <button type="submit" className="btn btn-primary"  onClick={handleSubmit}> { t('Register') }  </button>  
                 </div>
             </form>
 
-            <Link to="/login"> Login </Link>
+            <Link to="/login"> { t('Login') } </Link>
 
         </div>
     </div>

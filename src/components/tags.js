@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, memo } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { Link, withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -66,4 +66,4 @@ const Tags = () => {
     )
 }
 
-export default Tags;
+export default memo( Tags );

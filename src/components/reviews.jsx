@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { QueryReviews } from '../query/review'
 import { deleteReviewmutation } from '../mutations/review'
@@ -63,4 +63,4 @@ const Reviews = ( prosp ) => {
     )
 }
 
-export default Reviews;
+export default memo( Reviews );

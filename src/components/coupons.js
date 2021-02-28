@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, memo } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { Link, withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -64,4 +64,4 @@ const Coupons = ( props ) => {
     )
 }
 
-export default withRouter( Coupons );
+export default memo( Coupons );

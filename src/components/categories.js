@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, memo } from 'react'
 import { useQuery, useMutation } from '@apollo/client';
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import { QueryCategories } from '../query/category'
@@ -68,4 +68,4 @@ const Categories = () => {
     )
 }
 
-export default withRouter(Categories);
+export default memo(Categories);
