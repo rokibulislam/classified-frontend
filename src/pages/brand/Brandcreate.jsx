@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import AdminLayout from '../../layout/AdminLayout'
 import { createBrandmutation } from '../../mutations/Brands' 
 import { QueryBrands } from '../../query/brand'
@@ -10,13 +10,18 @@ const BrandCreate = ( props  ) => {
     const [ description, setDescription ] = useState('');
 
     const [createBrand, { data }] = useMutation( createBrandmutation, {
-        refetchQueries: [ { query: QueryBrands } ],
+        // refetchQueries: [ { query: QueryBrands } ],
         onError: (error) => {
             console.log('error');
         },
-        update: (store, response) => {
-            props.history.push('/admin/brands')
-            console.log( response );
+
+        update: (cache, { data: { createBrand } } ) => {
+            const result = cache.readQuery({
+                query: QueryBrands
+            })
+            console.log( result );
+            // props.history.push('/admin/brands')
+            // console.log( response );
         }
     } );
 

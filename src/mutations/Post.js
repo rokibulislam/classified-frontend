@@ -45,6 +45,16 @@ export const deletePostmutation = gql`
     }
 `;
 
+export const bulkdeletePostmutation = gql`
+    mutation bulkdeletePost ( $id: [ ID! ]) {
+        bulkdeletePost (id: $id ) {
+          id
+          title
+          body
+        }
+    }
+`;
+
 export const useCreatePost = () => useMutation( createPostmutation, {
 
 })

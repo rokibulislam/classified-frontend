@@ -54,54 +54,34 @@ const LoginForm = ( props ) => {
             {
                 ( error && error.length  ? <div className="alert alert-danger"> { error } </div> : null )
             }
-        <div className="row justify-content-md-center mt-5">
-            <div className="col-md-offset-4 col-md-4">
-
-                <div className="row">
-
-                    <div className="col-md-6">
-                        { t('login') }
-                    </div>
-
-                    <div className="col-md-6">
-                        <Link to="/register"> { t('create an account') } </Link>
-                    </div>
-
+        <div className="login-form login-signin">
+            <form className="form" novalidate="novalidate" id="kt_login_signin_form">
+                <div className="pb-13 pt-lg-0 pt-5">
+                    <span className="text-muted font-weight-bold font-size-h4">New Here?
+                        <Link to="/register" id="kt_login_signup" className="text-primary font-weight-bolder"> Create an Account </Link>
+                    </span>
                 </div>
-
-                <form className="loginform"> 
-                    
-                    <div class="form-group">
-                        <label> { t('email') }  </label>
-                        <input type="email" className="form-control" name="email" placeholder="Enter Your Email" 
-                            value={state.email} onChange={handleChange}
-                        />
-                        { error.name && (
-                            <span className='text-danger'> {error.email} </span>
-                        )}
-                    </div>
-
-                    <div className="form-group">
-                        <label> { t('password') }  </label>
-                        <input type="password" className="form-control" name="password" placeholder="Enter Your Password"   
-                            value={state.password} onChange={handleChange}
-                        />
+                <div className="form-group">
+                    <label className="font-size-h6 font-weight-bolder text-dark">Email</label>
+                    <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="text" name="email" autocomplete="off" value={state.email} onChange={handleChange} />
+                    { error.name && (
+                        <span className='text-danger'> {error.email} </span>
+                    )}
+                </div>
+                <div className="form-group">
+                    <div className="d-flex justify-content-between mt-n5">
+                        <label className="font-size-h6 font-weight-bolder text-dark pt-5">Password</label>
+                        <Link to="/forget-password" className="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot"> { t('Forget Password?') } </Link>
                         { error.password && (
                             <span className='text-danger'> {error.password} </span>
                         )}
                     </div>
-
-                    <div className="row">
-                        <div className="col-md-6">
-                            <Link to="/forget-password"> { t('Forget Password?') } </Link>
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <button type="submit"  className="btn btn-primary mt-3 btn-block" onClick={handleSubmit}> { t( 'Login') } </button> 
-                    </div> 
-                </form>
-            </div>
+                    <input className="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="password" name="password" autocomplete="off" value={state.password} onChange={handleChange} />
+                </div>
+                <div className="pb-lg-0 pb-5">
+                    <button type="sumit" id="kt_login_signin_submit" className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3" onClick={handleSubmit}>  { t( 'Login') } </button>
+                </div>
+            </form>
         </div>
         </>
     )

@@ -34,6 +34,7 @@ import ForgetPasswordPage from './pages/auth/ForgetPassword'
 import ResetPasswordPage from './pages/auth/ResetPassword'
 
 import AdminOrders from './pages/order/orders'
+import AdminOrder from './pages/order/order'
 import Profile from './pages/user/profile'
 import ReviewPage from './pages/review/reviews'
 import ReportPage from './pages/report/reports'
@@ -85,6 +86,7 @@ const routes = () => {
                 <ProtectedRoute path='/admin/complains/create'  component={ComplainCreate} />
                 <ProtectedRoute path='/admin/complains/:id/edit'  component={ComplainEdit} />
                 <ProtectedRoute path='/admin/complains'  component={AdminComplains} />
+                <ProtectedRoute path='/admin/order/:id'  component={AdminOrder} />
                 <ProtectedRoute path='/admin/orders'  component={AdminOrders} />
                 <ProtectedRoute path='/admin/profile'  component={Profile} />
                 <ProtectedRoute path='/admin/reviews'  component={ReviewPage} />

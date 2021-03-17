@@ -23,7 +23,7 @@ const AdminSidebar = (props) => {
                 Logo
             </Link>
 
-            <ul className="sidebar-nav">
+            <ul className="menu-nav sidebar-nav">
                 <li> <Link to="/" className="sidebar-nav-link">  { t('Dashboard') } </Link>  </li>
                 <li> <Link to="/admin/posts" className="sidebar-nav-link"> { t('Posts') } </Link> </li>
                 <li> <Link to="/admin/attribute" className="sidebar-nav-link"> { t('Attribute') } </Link> </li> 

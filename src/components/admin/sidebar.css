@@ -1,14 +1,17 @@
 .sidebar {
-    background-color: #fff;
+    background-color: #1e1e2d;
+    color: #fff;
+    /* background-color: #fff; */
     /* background-color: #3c4b64; */
     /* color: #fff; */
 }
 
 .sidebar-logo, .sidebar-logo:hover {
-    /* color: #fff; */
+    color: #fff;
+    background-color: #1e1e2d;
     /* background: rgba(0,0,21,.2); */
-    color: #000;
-    background: #fff;
+    /* color: #000; */
+    /* background: #fff; */
     display: block;
     padding: 15px;
     text-emphasis: center;
@@ -21,8 +24,8 @@
 }
 
 .sidebar-nav li a { 
-    /* color: #fff; */
-    color: black;
+    color: #fff;
+    /* color: black; */
 }
 
 .sidebar-nav-link {

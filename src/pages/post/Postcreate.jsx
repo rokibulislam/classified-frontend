@@ -27,7 +27,18 @@ const PostCreate = ( props  ) => {
         onError: (error) => {
             console.log('error');
         },
-        update: (store, response) => {
+        update: (cache, { data: { createPost } } ) => {
+         /*   
+            const result = cache.readQuery({
+                query: QueryPosts
+            })
+
+
+            cache.writeQuery({
+                query: QueryPosts,
+                data: { posts: [ createPost, ...data.posts]}
+            })
+        */
             props.history.push('/admin/posts');
         }
     } );
@@ -68,9 +79,9 @@ const PostCreate = ( props  ) => {
                 ( state.error && state.error.length  ? <div className="alert alert-danger"> { state.error } </div> : null )
             }
             <div className="row justify-content-md-center mt-5">
-                <div className="col-md-offset-4 col-md-4">
+                {/* <div className="col-md-offset-4 col-md-4"> */}
                     <form className="loginform"> 
-                        
+                    
                         <div className="form-group">
                             <label> Title  </label>
                             <input type="text" className="form-control" name="title" placeholder="Enter Your Title" 
@@ -113,7 +124,7 @@ const PostCreate = ( props  ) => {
                             <button type="submit"  className="btn btn-primary" onClick={handleSubmit}> Create Post </button> 
                         </div> 
                     </form>
-                </div>
+                {/* </div> */}
             </div>
         </AdminLayout>
     )

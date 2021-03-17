@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useMutation } from '@apollo/client';
+import {  useMutation } from '@apollo/client';
 import AdminLayout from '../../layout/AdminLayout'
 import { createCategoriesmutation } from '../../mutations/Categories' 
 import { QueryCategories } from '../../query/category' 
@@ -13,20 +13,21 @@ const CategoryCreate = ( props  ) => {
         onError: (error) => {
             console.log('error');
         },
-        update: (store, response) => {
-            props.history.push('/admin/categories');
-        },
-       /*
-        update(cache, { data : { createCategory } }) {
-            cache.writeQuery({
-                query: QueryCategories,
-                variables: { id: createCategory.id},
-                createCategory
+        update: (cache, { data : { createCategory } } ) => {
+            const result = cache.readQuery({
+                query: QueryCategories
             })
-
-            props.history.push('/admin/categories');
+            console.log( result );
+            // props.history.push('/admin/categories');
+        /*
+            update(cache, { data : { createCategory } } ) {}
+            */
+            // cache.writeQuery({
+            //     query: QueryCategories,
+            //     variables: { id: createCategory.id},
+            //     createCategory
+            // })
         }
-        */
     } );
 
     const handleSubmit = ( e ) => {

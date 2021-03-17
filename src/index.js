@@ -2,7 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { ApolloProvider,ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import './style.css'
 import Routes from './routes'
 import { getJwt } from './services/authService'
 import './i18n';
