@@ -2,7 +2,7 @@ import React from 'react'
 import AuthLayout from '../../layout/authLayout'
 import RegisterForm from '../../components/registerForm'
 
-const RegisterPage = () => {
+const RegisterPage: React.FC<{}> = () => {
     return (
         <AuthLayout>
             <RegisterForm/>

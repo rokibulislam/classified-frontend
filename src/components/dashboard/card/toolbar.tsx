@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CardToolbar = ( props ) => {
+const CardToolbar: React.FC<{}> = ( props ) => {
     return (
         <>
             <div class="card-toolbar">

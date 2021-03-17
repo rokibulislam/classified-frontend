@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { gql, useMutation } from '@apollo/client';
-import { Link, withRouter, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { signupmutation } from '../mutations/Signup'
 
-const RegisterForm = ( props ) => {
+const RegisterForm: React.FC<{}> = ( props ) => {
     const history = useHistory();
     const { t } = useTranslation()
 

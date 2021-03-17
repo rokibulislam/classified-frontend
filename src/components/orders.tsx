@@ -3,8 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { Link, useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-
-const Orders = ( props ) => {
+const Orders: React.FC<{}> = ( props ) => {
 
     const orders = [
         {

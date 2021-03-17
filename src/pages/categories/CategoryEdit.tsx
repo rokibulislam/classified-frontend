@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client';
 
@@ -11,7 +9,6 @@ import { QueryCategories, QueryCategory } from '../../query/category'
 const CategoryEdit = ( props  ) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    let history = useHistory();
     
     const [ updateCategory, mutationResult ] = useMutation( updateCategorymutation, {
         onError: (error) => {

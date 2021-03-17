@@ -3,7 +3,7 @@ import AdminSidebar from '../components/admin/adminSidebar'
 import AdminTopbar from '../components/admin/adminTopbar'
 import './layout.css';
 
-const AdminLayout = props => {
+const AdminLayout: React.FC<{}> = props => {
     return (
       <>
       <div className="classified-admin">

@@ -5,7 +5,7 @@ import AdminLayout from '../../layout/AdminLayout'
 
 import { useTranslation } from 'react-i18next'
 
-const CouponCreate = ( props ) => {
+const CouponCreate: React.FC<{}> = ( props ) => {
     const { t } = useTranslation();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');

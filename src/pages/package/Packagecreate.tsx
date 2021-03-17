@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
 import { useMutation } from '@apollo/client';
 import AdminLayout from '../../layout/AdminLayout'
 import { createPackagemutation } from '../../mutations/Package' 
 import { QueryPackages } from '../../query/package'
 
-const PackageCreate = ( props  ) => {
+const PackageCreate: React.FC<{}> = ( props  ) => {
     const [state , setState] = useState({
         name : "",
         amount : "",

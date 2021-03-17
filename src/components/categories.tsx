@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { QueryCategories } from '../query/category'
 import { deleteCategorymutation } from '../mutations/Categories'
 
-const Categories = () => {
+const Categories: React.FC<{}> = (props) => {
     const { loading, error, data } = useQuery(QueryCategories);
     const { t } = useTranslation()
     const [ deleteCategory ] = useMutation( deleteCategorymutation, {

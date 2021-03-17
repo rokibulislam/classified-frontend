@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { useMutation } from '@apollo/client';
 import AdminLayout from '../../layout/AdminLayout'
 import { createComplainmutation } from '../../mutations/Complain' 
 import { QueryComplains } from '../../query/complain'
 
-const ComplainCreate = ( props  ) => {
+const ComplainCreate: React.FC<{}> = ( props  ) => {
     const [description, setDescription] = useState('');
     
     const [ createComplain, { data }] = useMutation( createComplainmutation, {

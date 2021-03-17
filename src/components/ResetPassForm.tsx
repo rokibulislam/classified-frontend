@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-const ResetPassForm = props => {
+const ResetPassForm: React.FC<{}> = ( props ) => {
     const { t } = useTranslation()
     const [ state, setState ] = useState( {
         currentPassword: '',

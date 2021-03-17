@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import {  useMutation } from '@apollo/client';
 import AdminLayout from '../../layout/AdminLayout'
 import { createCategoriesmutation } from '../../mutations/Categories' 
 import { QueryCategories } from '../../query/category' 
 
-const CategoryCreate = ( props  ) => {
+const CategoryCreate: React.FC<{}> = ( props  ) => {
     const [ name, setName ] = useState('');
     const [ description, setDescription ] = useState('');
     const [createCategory, { data }] = useMutation( createCategoriesmutation, {

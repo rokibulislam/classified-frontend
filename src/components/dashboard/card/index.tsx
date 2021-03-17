@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = ( { title, authors } ) => {
+const Card: React.FC<{ title: string, authors: object[] }> = ( { children, title, authors } ) => {
 
     return (
         <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "ES6",
+    "module": "esnext",
     "lib": [
       "DOM",
       "DOM.Iterable",
@@ -30,5 +30,7 @@
   "include": [
     "src"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

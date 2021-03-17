@@ -1,9 +1,9 @@
 import React from 'react'
 
-const UserCreate = ( props ) => {
+const UserCreate: React.FC<{}> = ( props ) => {
     return (
-        <>
-
+        <>  
+            User Create
         </>
     )
 }

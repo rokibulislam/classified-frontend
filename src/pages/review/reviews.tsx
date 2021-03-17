@@ -3,8 +3,7 @@ import AdminLayout from '../../layout/AdminLayout'
 import Reviews from '../../components/reviews'
 import ReviewForm from '../../components/reviewForm'
 
-
-const ReviewPage = () => {
+const ReviewPage: React.FC<{}> = () => {
     return (
         <AdminLayout>
             <Reviews/>

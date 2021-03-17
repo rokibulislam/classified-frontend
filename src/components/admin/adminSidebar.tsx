@@ -6,7 +6,7 @@ import auth from '../../services/authService'
 // import '../../css/sidebar.css'
 import './sidebar.css';
 
-const AdminSidebar = (props) => {
+const AdminSidebar: React.FC<{}> = (props) => {
     let history = useHistory();
     const { t } = useTranslation()
 

@@ -5,7 +5,7 @@ import {getActiveLanguage} from '../util/function'
 import FlagNor from '../images/svg/flag-nor'
 import FlagEn from '../images/svg/flag-en'
 
-const Language = props => {
+const Language: React.FC<{}> = props => {
   const { t } = useTranslation()
   const [activeLang, updateActiveLang] = useState( getActiveLanguage() )
 

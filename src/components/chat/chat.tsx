@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 
-const Chat = () => {
+const Chat: React.FC<{}> = (props) => {
     const [ messages, setMessages ] = useState([]);
 
     useEffect(() => {

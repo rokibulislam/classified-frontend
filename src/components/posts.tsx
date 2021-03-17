@@ -6,7 +6,7 @@ import { editSvg, deleteSvg } from '../images/svg/edit'
 import { QueryPosts } from '../query/post'
 import { deletePostmutation, bulkdeletePostmutation } from '../mutations/Post'
 
-const Posts = () => {
+const Posts: React.FC<{}> = ( props ) => {
     let history = useHistory();
     const { t } = useTranslation();
     const { loading, error, data, fetchMore } = useQuery(QueryPosts);

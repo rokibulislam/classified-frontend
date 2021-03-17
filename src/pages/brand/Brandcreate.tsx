@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { gql, useMutation } from '@apollo/client';
 import AdminLayout from '../../layout/AdminLayout'
 import { createBrandmutation } from '../../mutations/Brands' 
 import { QueryBrands } from '../../query/brand'
 
-const BrandCreate = ( props  ) => {
+const BrandCreate: React.FC<{}> = ( props  ) => {
     const [name, setName] = useState('');
     const [ description, setDescription ] = useState('');
 

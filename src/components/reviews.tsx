@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QueryReviews } from '../query/review'
 import { deleteReviewmutation } from '../mutations/review'
 
-const Reviews = ( prosp ) => {
+const Reviews: React.FC<{}> = ( props ) => {
     const { loading, error, data } = useQuery(QueryReviews);
     
     const [ deleteReview ] = useMutation( deleteReviewmutation, {

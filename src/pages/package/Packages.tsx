@@ -2,8 +2,7 @@ import React from 'react'
 import AdminLayout from '../../layout/AdminLayout'
 import Packages from '../../components/packages'
 
-const AdminPackages = () => {
-    
+const AdminPackages: React.FC<{}> = () => {
     return (
         <>
             <AdminLayout>

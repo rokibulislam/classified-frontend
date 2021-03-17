@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import AdminLayout from '../../layout/AdminLayout'
 import { useMutation, useQuery } from '@apollo/client';
 import { createPostmutation } from '../../mutations/Post' 

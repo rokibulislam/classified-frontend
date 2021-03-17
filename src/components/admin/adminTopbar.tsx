@@ -2,12 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Language from '../languages'
 import './topbar.css'
 
-const AdminTopbar = (props) => {
-
-    useEffect(() => {
-
-    });
-    
+const AdminTopbar: React.FC<{}> = (props) => {
     return (
         <> 
         <div className="classified-admin-header">

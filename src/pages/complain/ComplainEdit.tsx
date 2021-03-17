@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
 import { useMutation } from '@apollo/client';
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client';
@@ -8,8 +6,7 @@ import AdminLayout from '../../layout/AdminLayout'
 import { QueryComplain, QueryComplains } from '../../query/complain'
 import { updateComplainmutation } from '../../mutations/Complain'
 
-const ComplainEdit = ( props  ) => {
-    let history = useHistory();
+const ComplainEdit= ( props  ) => {
     let { id } = useParams();
     const [description, setDescription] = useState('');
 

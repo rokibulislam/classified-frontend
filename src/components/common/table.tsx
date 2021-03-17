@@ -3,7 +3,7 @@ import TableHeader from './tableHeader'
 import TableBody from './tableBody'
 import TableFooter from './tableFooter'
 
-const Table = props  => {
+const Table: React.FC<{}> = props  => {
     return (
         <>
             <table className="table">

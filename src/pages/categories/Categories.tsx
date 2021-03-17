@@ -1,7 +1,8 @@
 import React from 'react'
 import AdminLayout from '../../layout/AdminLayout'
 import Categories from '../../components/categories'
-const AdminCategories = () => {
+
+const AdminCategories: React.FC<{}> = (props) => {
     
     return (
         <>

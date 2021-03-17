@@ -3,7 +3,7 @@ import AdminLayout from '../layout/AdminLayout'
 import Card from '../components/dashboard/card/index'
 import Orders from '../components/orders'
 
-const AdminDashboard = () => {
+const AdminDashboard: React.FC<{}> = () => {
     
     const authors = [
         {

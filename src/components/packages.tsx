@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { QueryPackages } from '../query/package'
 import { deletePackagemutation } from '../mutations/Package'
 
-const Packages = () => {
+const Packages: React.FC<{}> = ( props ) => {
     const { t } = useTranslation();
     const { loading, error, data }  = useQuery(QueryPackages);
     const [ deletePackage ] = useMutation( deletePackagemutation, {

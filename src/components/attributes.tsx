@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { QueryAttributes } from '../query/attribute'
 import { deleteAttributemutation  } from '../mutations/Attributes'
 
-const Attributes = ( props ) => {
+const Attributes: React.FC<{}> = ( props ) => {
     const { t } = useTranslation();
     const { loading, error, data }  = useQuery( QueryAttributes );
     const [ deleteAttribute ] = useMutation( deleteAttributemutation, {

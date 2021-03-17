@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-const ProfileForm = () => {
+const ProfileForm: React.FC<{}> = ( propd ) => {
     const {  t } = useTranslation();
     const [ state, setState ] = useState({
         firstname: "",

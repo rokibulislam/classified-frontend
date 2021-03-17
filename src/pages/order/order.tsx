@@ -1,7 +1,7 @@
 import React from 'react'
 import AdminLayout from '../../layout/AdminLayout'
 
-const AdminOrder = ( ) => {
+const AdminOrder: React.FC<{}> = (  props ) => {
     return (
         <AdminLayout>
             <div className="flex-row-fluid ml-lg-12">

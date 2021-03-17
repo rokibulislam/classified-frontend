@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { QueryCoupons } from '../query/coupon'
 import { deleteCouponmutation  } from '../mutations/coupons'
 
-const Coupons = ( props ) => {
+const Coupons: React.FC<{}>  = ( props ) => {
     const { t } = useTranslation();
     const { loading, error, data }  = useQuery( QueryCoupons );
     const [ deleteCoupon ] = useMutation( deleteCouponmutation, {

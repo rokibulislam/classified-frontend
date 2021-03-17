@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { useMutation } from '@apollo/client';
 import AdminLayout from '../../layout/AdminLayout'
 import { createTagsmutation } from '../../mutations/Tags' 
 import { QueryTags } from '../../query/tag'
 
-const TagCreate = ( props  ) => {
+const TagCreate: React.FC<{}> = ( props  ) => {
     const [ name, setName ] = useState('');
     const [ description, setDescription ] = useState('');
 

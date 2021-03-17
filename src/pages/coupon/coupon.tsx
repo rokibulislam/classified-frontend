@@ -2,8 +2,7 @@ import React from 'react'
 import AdminLayout from '../../layout/AdminLayout'
 import Coupons from '../../components/coupons'
 
-
-const AdminCoupon = ( ) => {
+const AdminCoupon: React.FC<{}> = ( props ) => {
     return (
         <>
             <AdminLayout>

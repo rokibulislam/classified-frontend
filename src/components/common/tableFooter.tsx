@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TableFooter = props => {
+const TableFooter: React.FC<{}> = props => {
     return (
         <tfoot>
             <tr>

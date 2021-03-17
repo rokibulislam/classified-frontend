@@ -1,7 +1,8 @@
 import React from 'react'
 import AdminLayout from '../../layout/AdminLayout'
 import Users from '../../components/users'
-const UserPage = ( props ) => {
+
+const UserPage: React.FC<{}> = ( props ) => {
     return (
         <AdminLayout>
             UserList

@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { loginmutation, useLoginMutation } from '../mutations/Login' 
 import authService from '../services/authService'
 
-const LoginForm = ( props ) => {
+const LoginForm: React.FC<{}> = ( props ) => {
     let history = useHistory();
     const { t } = useTranslation()
 
@@ -17,12 +17,14 @@ const LoginForm = ( props ) => {
 
     const [login, { data }] = useMutation( loginmutation, {
         onError: ( error ) => {
+            console.log( error );
             setState(prevState => ({
                 ...prevState,
                 error: error.message,
             }))
         },
         update: ( store, response ) => {
+            console.log( response );
             let token = response.data.login.token 
             authService.setJwt( token )
             history.push('/');
@@ -39,6 +41,10 @@ const LoginForm = ( props ) => {
 
     const handleSubmit =  ( e ) => {
         e.preventDefault();
+        console.log( state.email );
+        console.log( state.password );
+        console.log( login() );
+
         login({
             variables: {
                 email: state.email, 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AuthLayout from '../../layout/authLayout'
 import ResetPassForm from '../../components/ResetPassForm'
 
-const ResetPasswordPage = () => {
+const ResetPasswordPage: React.FC<{}> = () => {
     return (
         <>
             <AuthLayout>

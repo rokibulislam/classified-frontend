@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TableBody = props => {
+const TableBody: React.FC<{}> = props => {
     return (
         <tbody>
 

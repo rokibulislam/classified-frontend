@@ -1,7 +1,7 @@
 import React from 'react'
 import './auth.css';
 
-const authLayout = (props) => {
+const authLayout: React.FC<{}> = (props) => {
     return (
 <div className="d-flex flex-column flex-root">
     <div className="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">

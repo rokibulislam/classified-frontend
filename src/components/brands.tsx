@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { QueryBrands } from '../query/brand'
 import { deleteBrandmutation } from '../mutations/Brands'
 
-const Brands = ( props ) => {
+const Brands: React.FC<{}> = ( props ) => {
     const { t } = useTranslation();
     const { loading, error, data }  = useQuery(QueryBrands);
     const [ deleteBrand ] = useMutation( deleteBrandmutation, {

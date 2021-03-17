@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { QueryComplains } from '../query/complain'
 import { deleteComplainmutation } from '../mutations/Complain'
 
-const Complains = () => {
+const Complains: React.FC<{}>  = (props) => {
     const { loading, error, data } = useQuery(QueryComplains);
     const [ deleteComplain ] = useMutation( deleteComplainmutation, {
         refetchQueries: [ { query: QueryComplains } ],

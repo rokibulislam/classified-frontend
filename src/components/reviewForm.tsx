@@ -4,7 +4,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { createReviewmutation } from '../mutations/review'
 import { QueryReviews } from '../query/review'
 
-const ReviewForm = ( props  ) => {
+const ReviewForm: React.FC<{}> = ( props  ) => {
     const { t } = useTranslation();
 
     const [state , setState] = useState({

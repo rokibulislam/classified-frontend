@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-const ForgetPassForm = ( props ) => {
+
+const ForgetPassForm: React.FC<{}> = ( props ) => {
     const { t } = useTranslation();
 
     const handleSubmit = e => {
