@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, SyntheticEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const ProfileForm: React.FC<{}> = ( propd ) => {

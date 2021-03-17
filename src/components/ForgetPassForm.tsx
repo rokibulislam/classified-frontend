@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { SyntheticEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const ForgetPassForm: React.FC<{}> = ( props ) => {

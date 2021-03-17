@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { SyntheticEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { gql, useMutation } from '@apollo/client';
 import { Link, useHistory } from 'react-router-dom'
@@ -31,7 +31,7 @@ const LoginForm: React.FC<{}> = ( props ) => {
         }
     });
 
-    const handleChange = (e) => {
+    const handleChange = ( e ) => {
         const {name , value} = e.target   
         setState(prevState => ({
             ...prevState,
